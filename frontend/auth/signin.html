@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ubuntu Gojo - Sign In</title>
+  <link rel="stylesheet" href="signin.css">
+  <link rel="Icon" href="Icon.jpg">
+</head>
+
+<body>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <!-- MAIN CONTENT -->
+  <main class="page">
+    <!-- LEFT SIDE -->
+    <section class="intro">
+      <div class="step-pill">
+        <span></span>
+        Step 1 of Your Journey
+      </div>
+      <h1>
+        Your future horizon<br>
+        starts <strong>at home.</strong>
+      </h1>
+      <p class="intro-text">
+        Opportunities are everywhere, but finding the right fit is challenging.
+        Join Ubuntu Gojo to transform scattered possibilities into a clear,
+        personalized path to your degree.
+      </p>
+
+      <!-- STUDENT PATH -->
+      <div class="student-path">
+        <h3>THE STUDENT PATH AHEAD</h3>
+        <div class="path-item active">
+          <span class="number">1</span>
+          <span>
+            Discover scholarships tailored to your exact profile
+          </span>
+        </div>
+        <div class="path-item active">
+          <span class="number">2</span>
+          <span>
+            Prepare application materials with guided clarity
+          </span>
+        </div>
+        <div class="path-item active">
+          <span class="number">3</span>
+          <span>
+            Apply with confidence and track your success
+          </span>
+        </div>
+      </div>
+      <div class="security-note">
+        <span class="shield">⬟</span>
+        Your data is secure. We never share your academic information.
+      </div>
+    </section>
+
+    <!-- SIGN IN CARD -->
+    <section class="signup-card">
+      <div class="card-header">
+        <h2>Sign In To Your Account</h2>
+        <span class="form-step">Step 1 of 3</span>
+      </div>
+      <form id="signinForm">
+
+        <!-- EMAIL -->
+        <div class="field">
+          <label for="email">EMAIL ADDRESS</label>
+          <div class="input-wrap">
+            <span class="input-icon">✉</span>
+            <input id="email" type="email" placeholder="abebe.kebede@example.com" required>
+          </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="field">
+          <label for="password"> PASSWORD </label>
+          <div class="input-wrap">
+            <span class="input-icon">▣</span>
+            <input id="password" type="password" placeholder="At least 8 characters" minlength="8" required>
+            <button type="button" class="eye-btn" id="togglePassword">◉</button>
+          </div>
+        </div>
+        <div class="form-divider"></div>
+
+        <!-- CONTINUE BUTTON -->
+        <button type="submit" class="continue-btn">
+  Continue Journey <span>→</span>
+</button>
+        <p class="account-text">
+  Don't have an account? <a href="signup.html">Sign Up here</a>
+</p>
+      </form>
+    </section>
+  </main>
+  <script src="../api.js"></script>
+  <script src="signin.js"></script>
+</body>
+</html>

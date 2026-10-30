@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Journey Dashboard | Ubuntu Gojo - Scholarship Guide</title>
+
+    <link rel="Icon" href="Icon.jpg">
+    <link rel="stylesheet" href="Dashboard.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         FLOATING NAVIGATION
+    ========================== -->
+    <header class="floating-header">
+        <div class="nav-container">
+
+            <a href="../Landing.html" class="brand-logo">
+                <span class="logo-icon">UG</span>
+
+                <div class="brand-text">
+                    <span class="brand-name">UBUNTU GOJO</span>
+                    <span class="brand-sub">The Digital Home</span>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+                <a href="Dashboard.html" class="nav-link active">My Journey</a>
+                <a href="Explore.html" class="nav-link">Explore Opportunities</a>
+                <a href="MyOpportunities.html" class="nav-link">My Opportunities</a>
+                <a href="Support.html" class="nav-link">Community Support</a>
+            </nav>
+
+            <div class="nav-profile-menu">
+
+                <div class="profile-avatar-pill" id="profileMenuToggle">
+                    <span id="navUserName">Loading...</span>
+                    <i class="fa-solid fa-chevron-down text-sm"></i>
+                </div>
+
+                <div class="profile-dropdown" id="profileDropdown">
+
+                    <a href="Profile.html">
+                        <i class="fa-regular fa-user"></i>
+                        My Profile
+                    </a>
+
+                    <a href="MyOpportunities.html">
+                        <i class="fa-regular fa-bookmark"></i>
+                        My Opportunities
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-regular fa-gear"></i>
+                        Settings
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <a href="#" class="text-danger" id="signOutBtn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Sign Out
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         MAIN DASHBOARD
+    ========================== -->
+    <main class="dashboard-main">
+
+        <div class="dashboard-container">
+
+
+            <!-- =========================
+                 WELCOME / HORIZON BANNER
+            ========================== -->
+            <section class="horizon-banner">
+
+                <div class="horizon-banner-content">
+
+                    <div class="badge-pill">
+                        <i class="fa-solid fa-seedling"></i>
+                        <span id="journeyStage">Getting Started</span>
+                    </div>
+
+                    <h1 id="Greeting">
+                        Welcome back!
+                    </h1>
+
+                    <p id="dashboardSummary">
+                        Complete your profile and goals to discover opportunities that fit your journey.
+                    </p>
+
+                </div>
+
+
+                <div class="horizon-stat-card">
+
+                    <div class="horizon-gauge">
+                        <span class="gauge-number" id="journeyProgressNumber">
+                            0%
+                        </span>
+
+                        <span class="gauge-label">
+                            Journey Progress
+                        </span>
+                    </div>
+
+
+                    <div class="horizon-goal-text">
+
+                        <i class="fa-solid fa-horizon text-gold"></i>
+
+                        <div>
+                            <span>YOUR STUDY GOAL</span>
+
+                            <h4 id="horizonGoal">
+                                Not set yet
+                            </h4>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 JOURNEY SYSTEMS
+                 Current MVP + later phases
+            ========================== -->
+            <section class="journey-systems-section" aria-labelledby="journeySystemsTitle">
+                <div class="section-heading systems-heading">
+                    <div>
+                        <span class="section-eyebrow">YOUR PATHWAY</span>
+                        <h2 id="journeySystemsTitle">One journey, connected support</h2>
+                        <p>Explore what is available now. Learning, preparation, and application support remain part of the full journey and can be connected in the next phase.</p>
+                    </div>
+                </div>
+                <div class="journey-systems-grid">
+                    <a class="journey-system-card system-current" href="Profile.html">
+                        <span class="system-icon"><i class="fa-solid fa-compass"></i></span>
+                        <span class="system-kicker">START HERE</span>
+                        <strong>Discover Yourself</strong>
+                        <span>Build your profile, interests, and study goals.</span>
+                        <span class="system-link">Review your profile <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a class="journey-system-card system-current" href="Explore.html">
+                        <span class="system-icon"><i class="fa-solid fa-earth-americas"></i></span>
+                        <span class="system-kicker">AVAILABLE NOW</span>
+                        <strong>Explore & Decide</strong>
+                        <span>Compare opportunities, understand eligibility, and save promising options.</span>
+                        <span class="system-link">Explore opportunities <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <div class="journey-system-card system-next" id="learningSystemCard">
+                        <span class="system-icon"><i class="fa-solid fa-book-open"></i></span>
+                        <span class="system-kicker">CONNECTED LATER</span>
+                        <strong>Learning</strong>
+                        <span>Access curated resources that help you build knowledge and skills.</span>
+                        <span class="system-note">Part of the full Ubuntu Gojo journey</span>
+                    </div>
+                    <div class="journey-system-card system-next" id="preparationSystemCard">
+                        <span class="system-icon"><i class="fa-solid fa-list-check"></i></span>
+                        <span class="system-kicker">CONNECTED LATER</span>
+                        <strong>Preparation</strong>
+                        <span>Turn requirements and gaps into a practical preparation plan.</span>
+                        <span class="system-note">Part of the full Ubuntu Gojo journey</span>
+                    </div>
+                    <div class="journey-system-card system-next" id="applicationSystemCard">
+                        <span class="system-icon"><i class="fa-solid fa-file-signature"></i></span>
+                        <span class="system-kicker">CONNECTED LATER</span>
+                        <strong>Application</strong>
+                        <span>Organize documents, deadlines, and application progress.</span>
+                        <span class="system-note">Part of the full Ubuntu Gojo journey</span>
+                    </div>
+                    <a class="journey-system-card system-current" href="MyOpportunities.html">
+                        <span class="system-icon"><i class="fa-regular fa-bookmark"></i></span>
+                        <span class="system-kicker">AVAILABLE NOW</span>
+                        <strong>My Opportunities</strong>
+                        <span>Keep track of opportunities you are researching or planning to apply for.</span>
+                        <span class="system-link">Open your tracker <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </section>
+
+
+            <!-- =========================
+                 PERSONALIZED MATCHES
+            ========================== -->
+            <section class="matches-section" id="matches">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-eyebrow">
+                            PERSONALIZED FOR YOU
+                        </span>
+
+                        <h2>
+                            Your Ubuntu Gojo Matches
+                        </h2>
+
+                        <p id="goalSummary">
+                            Loading your goals...
+                        </p>
+                    </div>
+
+                    <a href="Explore.html" class="view-all-link">
+                        Explore All
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="recommendation-grid"
+                    id="matchList"
+                >
+                    <div class="loading-state">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        Loading your recommendations...
+                    </div>
+                </div>
+
+
+                <!-- Profile completion -->
+                <div class="profile-completion-box">
+
+                    <div class="profile-completion-icon">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+
+                    <div class="profile-completion-content">
+
+                        <strong>
+                            <span id="profileCompletionTitle">
+                                Complete your profile
+                            </span>
+                        </strong>
+
+                        <p
+                            class="profile-completion-text"
+                            id="profileCompletionText"
+                        >
+                            Complete your profile to improve your recommendations.
+                        </p>
+
+                    </div>
+
+                    <a href="Profile.html" class="profile-action">
+                        Update Profile
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================
+                 DASHBOARD GRID
+            ========================== -->
+            <div class="dashboard-grid-layout">
+
+
+                <!-- =========================
+                     LEFT COLUMN
+                ========================== -->
+                <div class="content-col-left">
+
+
+                    <!-- JOURNEY -->
+                    <div class="dash-card">
+
+                        <div class="card-header-flex">
+
+                            <h3>
+                                <i class="fa-solid fa-map-location-dot text-teal"></i>
+                                Your Step-by-Step Journey
+                            </h3>
+
+                            <span
+                                class="status-badge"
+                                id="journeyStepBadge"
+                            >
+                                Step 1 of 5
+                            </span>
+
+                        </div>
+
+                        <p class="section-desc">
+                            Track where you stand from discovery to achievement.
+                        </p>
+
+
+                        <div class="journey-roadmap-track">
+
+                            <div class="roadmap-step" id="journeyStep1">
+                                <div class="step-check">1</div>
+
+                                <div class="step-info">
+                                    <h4>1. Discover</h4>
+                                    <p>
+                                        Set your study interests and destination goals.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="roadmap-step" id="journeyStep2">
+                                <div class="step-check">2</div>
+
+                                <div class="step-info">
+                                    <h4>2. Fit Analysis</h4>
+                                    <p>
+                                        Discover opportunities matched to your profile.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="roadmap-step" id="journeyStep3">
+                                <div class="step-check">3</div>
+
+                                <div class="step-info">
+                                    <h4>3. Prepare & Gather</h4>
+                                    <p>
+                                        Prepare documents, tests and application materials.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="roadmap-step" id="journeyStep4">
+                                <div class="step-check">4</div>
+
+                                <div class="step-info">
+                                    <h4>4. Apply</h4>
+                                    <p>
+                                        Submit your applications before their deadlines.
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="roadmap-step" id="journeyStep5">
+                                <div class="step-check">5</div>
+
+                                <div class="step-info">
+                                    <h4>5. Achieve</h4>
+                                    <p>
+                                        Reach your study destination and scholarship goal.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PREPARATION TASKS -->
+                    <div class="dash-card">
+
+                        <div class="card-header-flex">
+
+                            <h3>
+                                <i class="fa-solid fa-list-check text-gold"></i>
+                                Your Next Steps
+                            </h3>
+
+                            <button
+                                class="btn-text-sm"
+                                id="addTaskBtn"
+                            >
+                                + Add Task
+                            </button>
+
+                        </div>
+
+                        <p class="section-desc">
+                            Small steps today can move your application forward.
+                        </p>
+
+
+                        <div
+                            class="task-list"
+                            id="taskListContainer"
+                        >
+
+                            <label class="task-item">
+                                <input type="checkbox">
+
+                                <div class="task-details">
+                                    <span class="task-title">
+                                        Complete your student profile
+                                    </span>
+
+                                    <span class="task-due">
+                                        <i class="fa-regular fa-circle"></i>
+                                        Profile
+                                    </span>
+                                </div>
+                            </label>
+
+
+                            <label class="task-item">
+                                <input type="checkbox">
+
+                                <div class="task-details">
+                                    <span class="task-title">
+                                        Define your study goals
+                                    </span>
+
+                                    <span class="task-due">
+                                        <i class="fa-regular fa-circle"></i>
+                                        Goals
+                                    </span>
+                                </div>
+                            </label>
+
+
+                            <label class="task-item">
+                                <input type="checkbox">
+
+                                <div class="task-details">
+                                    <span class="task-title">
+                                        Review your scholarship matches
+                                    </span>
+
+                                    <span class="task-due">
+                                        <i class="fa-regular fa-circle"></i>
+                                        Recommended
+                                    </span>
+                                </div>
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     RIGHT COLUMN
+                ========================== -->
+                <div class="content-col-right">
+
+
+                    <!-- TOP MATCHES -->
+                    <div class="dash-card">
+
+                        <div class="card-header-flex">
+
+                            <h3>
+                                <i class="fa-solid fa-bullseye text-gold"></i>
+                                Top Matches
+                            </h3>
+
+                            <span
+                                class="match-count"
+                                id="matchCount"
+                            >
+                                0
+                            </span>
+
+                        </div>
+
+                        <p class="section-desc">
+                            Your strongest current opportunities.
+                        </p>
+
+
+                        <div
+                            class="scholarship-mini-list"
+                            id="topMatchesList"
+                        >
+                            <div class="mini-loading">
+                                Loading...
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- COMMUNITY -->
+                    <div class="community-box">
+
+                        <div class="community-icon">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+
+                        <h3>
+                            The Gojo Community
+                        </h3>
+
+                        <p>
+                            You never walk alone. Connect with peers,
+                            mentors and successful scholars.
+                        </p>
+
+                        <button class="btn-gold-sm">
+                            Enter Community Hub
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         TASK MODAL
+    ========================== -->
+    <div
+        class="modal-overlay"
+        id="taskModal"
+    >
+
+        <div class="modal-card">
+
+            <button
+                class="modal-close"
+                id="closeTaskModal"
+            >
+                &times;
+            </button>
+
+            <div class="modal-icon">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+
+            <h3>
+                Add Preparation Task
+            </h3>
+
+            <p>
+                Define a new milestone or document requirement
+                for your application journey.
+            </p>
+
+
+            <div class="input-group">
+
+                <label for="new-task-title">
+                    Task Description
+                </label>
+
+                <div class="input-field-wrap">
+
+                    <i class="fa-regular fa-pen-to-square"></i>
+
+                    <input
+                        type="text"
+                        id="new-task-title"
+                        placeholder="e.g., Finalize CV layout"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="new-task-due">
+                    Timeline / Deadline Note
+                </label>
+
+                <div class="input-field-wrap">
+
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <input
+                        type="text"
+                        id="new-task-due"
+                        placeholder="e.g., Due in 3 days"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="btn-primary-action"
+                id="saveNewTaskBtn"
+            >
+                Add Task to List
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Toast -->
+    <div
+        class="toast-container"
+        id="toastContainer"
+    ></div>
+
+
+    <script src="../api.js"></script>
+    <script src="Dashboard.js"></script>
+
+</body>
+</html>

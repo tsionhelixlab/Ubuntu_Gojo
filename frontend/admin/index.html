@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ubuntu Gojo Admin</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+        <h1>Ubuntu Gojo Admin Dashboard</h1>
+        <p>Manage the opportunity data used by the matching engine.</p></header>
+        <section class="card"><h2 id="form-title">Add Opportunity</h2>
+            <form id="opportunity-form">
+                <input type="hidden" id="opp-id">
+                <div class="form-group"><label>Title *</label>
+                    <input id="title" required></div><div class="form-group">
+                        <label>Provider</label><input id="provider"></div>
+                        <div class="form-group">
+                            <label>Category</label>
+    <input id="category" value="Scholarship"></div><div class="form-group">
+        <label>Deadline</label><input id="deadline" type="date"></div><div class="form-group"><label>Application URL</label><input id="link" type="url"></div><div class="form-group"><label>Min age</label><input id="min-age" type="number"></div><div class="form-group"><label>Max age</label><input id="max-age" type="number"></div><div class="form-group"><label>Minimum academic percent equivalent</label><input id="min-academic" type="number" step="0.001"></div><div class="form-group"><label>Description</label><textarea id="description" rows="4"></textarea></div><button type="submit" id="submit-btn">Save Opportunity</button><button type="button" id="cancel-btn" style="display:none">Cancel</button></form></section><section class="card"><h2>Opportunities</h2><div id="loading">Loading...</div><table id="opp-table" style="display:none"><thead><tr><th>Title</th><th>Provider</th>
+        <th>Deadline</th><th>Actions</th></tr></thead><tbody id="opp-list"></tbody></table></section></div>
+        <script src="app.js"></script></body></html>

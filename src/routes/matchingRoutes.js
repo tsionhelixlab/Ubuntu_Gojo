@@ -1,0 +1,13 @@
+const express = require('express');
+const r = express.Router();
+const c = require('../controllers/matchingController');
+const auth = require('../middleware/authMiddleware');
+r.use(auth);
+r.get('/', c.getMatches);
+r.get('/explore', c.explore);
+r.get('/saved', c.listSaved);
+r.post('/saved/:id', c.saveOpportunity);
+r.patch('/saved/:id', c.updateSavedStatus);
+r.delete('/saved/:id', c.removeSaved);
+r.get('/opportunities/:id', c.getOpportunity);
+module.exports = r;

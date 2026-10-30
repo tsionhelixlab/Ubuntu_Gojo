@@ -1,0 +1,10 @@
+const express=require('express');
+const r=express.Router();
+const c=require('../controllers/adminController');
+const auth=require('../middleware/authMiddleware');
+const admin=require('../middleware/adminMiddleware');r.use(auth,admin);
+r.get('/opportunities',c.list);
+r.post('/opportunities',c.create);
+r.put('/opportunities/:id',c.update);
+r.delete('/opportunities/:id',c.remove);
+module.exports=r;

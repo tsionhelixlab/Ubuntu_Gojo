@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"><meta name="viewport" 
+    content="width=device-width,initial-scale=1">
+    <title>Explore Opportunities | Ubuntu Gojo</title>
+    <link rel="stylesheet" href="Explore.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="Dashboard.html"><span class="logo">UG</span><span><b>UBUNTU GOJO</b><small>The Digital Home</small></span></a><nav><a href="Dashboard.html">My Journey</a><a class="active" href="Explore.html">Explore</a><a href="MyOpportunities.html">My Opportunities</a><a href="Profile.html">My Profile</a></nav></header>
+<main class="page"><section class="intro"><p class="eyebrow">EXPLORE & DECIDE</p><h1>Find opportunities for your journey.</h1><p>Search freely, explore beyond your current goals, and check what each opportunity means for you.</p></section>
+<section class="search-panel"><form id="searchForm"><label class="searchbox"><i class="fa-solid fa-magnifying-glass"></i><input id="q" type="search" placeholder="Search name, subject, country, or provider"><button type="submit">Search</button></label><div class="filters">
+<label>Type<select id="type"><option value="">All types</option><option value="SCHOLARSHIP">Scholarship</option><option value="PROGRAM">Program</option></select></label>
+<label>Subtype<select id="subtype"><option value="">All subtypes</option></select></label>
+<label>Field<input id="field" placeholder="e.g. Biology"></label><label>Country<input id="country" placeholder="e.g. Germany"></label>
+<label>Education level<input id="education_level" placeholder="e.g. High School"></label>
+<label>Eligibility<select id="eligibility"><option value="">Any category</option><option value="ELIGIBLE">Eligible</option><option value="POTENTIALLY_ELIGIBLE">Potentially eligible</option><option value="REQUIREMENTS_NOT_MET">Requirements not met</option></select></label>
+<label>Deadline<select id="deadline"><option value="">Any deadline</option><option value="approaching">Within 14 days</option><option value="upcoming">Upcoming</option></select></label>
+<label>Sort<select id="sort"><option value="relevance">Recommended order</option><option value="deadline">Deadline soonest</option><option value="newest">Recently added</option></select></label>
+</div><div class="filter-actions"><label class="expired-toggle"><input id="expired" type="checkbox"> Show past opportunities</label><button type="button" class="quiet" id="clearFilters">Clear filters</button></div></form></section>
+<div class="results-heading"><h2 id="resultsTitle">Explore opportunities</h2><span id="resultCount" aria-live="polite">Loading…</span></div><div id="results" class="results-grid"><div class="loading">Loading opportunities…</div></div>
+</main>
+<div class="modal-backdrop" id="detailBackdrop" hidden><section class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><button class="close" id="closeDetails" aria-label="Close details">×</button><div id="detailContent"></div></section></div>
+<script src="../api.js"></script>
+<script src="Explore.js"></script></body>
+</html>
