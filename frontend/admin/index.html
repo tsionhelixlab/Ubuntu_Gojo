@@ -1,21 +1,75 @@
-<!doctype html><html><head><meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Ubuntu Gojo Admin</title><link rel="stylesheet" href="style.css">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ubuntu Gojo | Admin</title><link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-        <h1>Ubuntu Gojo Admin Dashboard</h1>
-        <p>Manage the opportunity data used by the matching engine.</p></header>
-        <section class="card"><h2 id="form-title">Add Opportunity</h2>
-            <form id="opportunity-form">
-                <input type="hidden" id="opp-id">
-                <div class="form-group"><label>Title *</label>
-                    <input id="title" required></div><div class="form-group">
-                        <label>Provider</label><input id="provider"></div>
-                        <div class="form-group">
-                            <label>Category</label>
-    <input id="category" value="Scholarship"></div><div class="form-group">
-        <label>Deadline</label><input id="deadline" type="date"></div><div class="form-group"><label>Application URL</label><input id="link" type="url"></div><div class="form-group"><label>Min age</label><input id="min-age" type="number"></div><div class="form-group"><label>Max age</label><input id="max-age" type="number"></div><div class="form-group"><label>Minimum academic percent equivalent</label><input id="min-academic" type="number" step="0.001"></div><div class="form-group"><label>Description</label><textarea id="description" rows="4"></textarea></div><button type="submit" id="submit-btn">Save Opportunity</button><button type="button" id="cancel-btn" style="display:none">Cancel</button></form></section><section class="card"><h2>Opportunities</h2><div id="loading">Loading...</div><table id="opp-table" style="display:none"><thead><tr><th>Title</th><th>Provider</th>
-        <th>Deadline</th><th>Actions</th></tr></thead><tbody id="opp-list"></tbody></table></section></div>
-        <script src="app.js"></script></body></html>
+  <div class="app-shell">
+    <header class="topbar"><div><p class="eyebrow">UBUNTU GOJO</p><h1>Admin dashboard</h1><p class="subheading">Keep opportunities accurate and learning resources useful.</p></div><button id="refresh-btn" class="button button-light" type="button">Refresh data</button></header>
+    <nav class="tabs" aria-label="Admin sections"><button class="tab active" data-tab="overview">Overview</button><button class="tab" data-tab="opportunities">Opportunities</button><button class="tab" data-tab="resources">Learning resources</button></nav>
+
+    <main>
+      <section id="overview-section" class="panel-section">
+        <div class="section-heading"><div><p class="eyebrow">AT A GLANCE</p><h2>Platform data</h2></div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span>Total opportunities</span><strong id="stat-total">—</strong></article>
+          <article class="stat-card"><span>Active opportunities</span><strong id="stat-active">—</strong></article>
+          <article class="stat-card"><span>Needs verification</span><strong id="stat-unverified">—</strong></article>
+          <article class="stat-card"><span>Learning resources</span><strong id="stat-resources">—</strong></article>
+        </div>
+        <div class="card"><h3>Before publishing an opportunity</h3><ul class="checklist"><li>Confirm the official source and application link.</li><li>Enter citizenship eligibility separately from destination countries.</li><li>Add only requirements stated by the provider.</li><li>Mark the record verified only after checking the source.</li></ul></div>
+      </section>
+
+      <section id="opportunities-section" class="panel-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">MATCHING DATA</p><h2>Opportunity management</h2><p class="muted">These eligibility fields feed the existing matching engine.</p></div><button id="new-opportunity" class="button" type="button">+ Add opportunity</button></div>
+        <div class="card form-card">
+          <div class="form-heading"><h3 id="opp-form-title">Add an opportunity</h3><button id="cancel-opp" class="text-button hidden" type="button">Cancel editing</button></div>
+          <form id="opportunity-form">
+            <input type="hidden" id="opp-id">
+            <div class="form-grid">
+              <label class="wide">Opportunity title *<input id="opp-title" required maxlength="250" placeholder="e.g. Global STEM Scholars Program"></label>
+              <label>Provider<input id="opp-provider" maxlength="200" placeholder="Organization or university"></label>
+              <label>Opportunity subtype *<select id="opp-subtype" required><option value="">Loading types...</option></select></label>
+              <label>Deadline<input id="opp-deadline" type="date"></label>
+              <label>Official application / information URL<input id="opp-url" type="url" placeholder="https://..."></label>
+              <label>Minimum age<input id="opp-min-age" type="number" min="0" max="120"></label>
+              <label>Maximum age<input id="opp-max-age" type="number" min="0" max="120"></label>
+              <label>Minimum academic percentage<input id="opp-min-academic" type="number" min="0" max="100" step="0.001"></label>
+              <label>Purpose (optional)<input id="opp-purpose" maxlength="40" placeholder="e.g. undergraduate study"></label>
+              <label class="wide">Description<textarea id="opp-description" rows="3" placeholder="Explain what the opportunity offers."></textarea></label>
+              <label class="wide">Eligible citizenship countries <span class="hint">Comma-separated; leave blank if not restricted or not stated.</span><input id="opp-countries" placeholder="Ethiopia, Kenya, ..."></label>
+              <label class="wide">Destination countries <span class="hint">Comma-separated; where the opportunity takes place or can be used.</span><input id="opp-destinations" placeholder="United States, Canada, Online"></label>
+              <label class="wide">Relevant fields <span class="hint">Comma-separated; use the same field names used in student goals.</span><input id="opp-fields" placeholder="computerScience, engineering, biology"></label>
+              <label class="wide">Eligible education levels <span class="hint">Comma-separated; use consistent values such as Highschool, Undergraduate.</span><input id="opp-education" placeholder="Highschool, Undergraduate"></label>
+              <div class="wide"><div class="subheading-row"><h4>Test requirements</h4><button id="add-test" class="button button-small button-light" type="button">+ Add test</button></div><div id="test-list" class="test-list"></div></div>
+              <label class="check-label"><input id="opp-verified" type="checkbox"> I checked the official source; mark verified</label>
+              <label class="check-label"><input id="opp-active" type="checkbox" checked> Active and visible to students</label>
+            </div>
+            <div class="form-actions"><button class="button" type="submit" id="save-opp">Save opportunity</button><span id="opp-form-message" class="form-message" role="status"></span></div>
+          </form>
+        </div>
+        <div class="card table-card"><div class="table-heading"><h3>All opportunities</h3><input id="opp-search" class="search" type="search" placeholder="Search title, provider, subtype..."></div><div class="table-wrap"><table><thead><tr><th>Opportunity</th><th>Type</th><th>Deadline</th><th>Verification</th><th>Status</th><th>Actions</th></tr></thead><tbody id="opp-rows"><tr><td colspan="6">Loading opportunities...</td></tr></tbody></table></div></div>
+      </section>
+
+      <section id="resources-section" class="panel-section hidden">
+        <div class="section-heading"><div><p class="eyebrow">LEARNING PLATFORM</p><h2>Learning resources</h2><p class="muted">Resources are attached to existing lessons in your database.</p></div><button id="new-resource" class="button" type="button">+ Add resource</button></div>
+        <div class="card form-card">
+          <div class="form-heading"><h3 id="resource-form-title">Add a learning resource</h3><button id="cancel-resource" class="text-button hidden" type="button">Cancel editing</button></div>
+          <form id="resource-form"><input type="hidden" id="resource-id"><div class="form-grid">
+            <label class="wide">Lesson *<select id="resource-lesson" required><option value="">Loading lessons...</option></select></label>
+            <label>Resource title *<input id="resource-title" required maxlength="250"></label>
+            <label>Resource type *<select id="resource-type" required><option value="video">Video</option><option value="article">Article</option><option value="guide">Guide</option><option value="template">Template</option><option value="website">Website</option><option value="image">Image</option><option value="pdf">PDF</option><option value="diagram">Diagram</option></select></label>
+            <label class="wide">Resource URL *<input id="resource-url" type="url" required placeholder="https://..."></label>
+            <label class="wide">Description<textarea id="resource-description" rows="2"></textarea></label>
+            <label>Display order<input id="resource-order" type="number" min="1" value="1"></label>
+            <label class="check-label"><input id="resource-free" type="checkbox" checked> Free resource</label>
+          </div><div class="form-actions"><button class="button" type="submit" id="save-resource">Save resource</button><span id="resource-form-message" class="form-message" role="status"></span></div></form>
+        </div>
+        <div class="card table-card"><div class="table-heading"><h3>Existing resources</h3><input id="resource-search" class="search" type="search" placeholder="Search resource or lesson..."></div><div class="table-wrap"><table><thead><tr><th>Resource</th><th>Lesson</th><th>Type</th><th>Free?</th><th>Actions</th></tr></thead><tbody id="resource-rows"><tr><td colspan="5">Loading resources...</td></tr></tbody></table></div></div>
+      </section>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="app.js"></script>
+</body></html>

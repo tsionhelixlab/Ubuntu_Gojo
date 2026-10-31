@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Discover your current scholarship knowledge and receive personalized learning guidance through Ubuntu Gojo."
+  >
+
+  <title>Initial Knowledge Assessment | Ubuntu Gojo</title>
+
+  <!-- Shared design -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Assessment-specific design -->
+  <link rel="stylesheet" href="assessment.css">
+
+  <!-- Assessment functionality -->
+  <script src="assessment.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="brand">
+      <h1>Ubuntu Gojo</h1>
+      <p>Your International Education Journey</p>
+    </div>
+
+    <span class="module-label">
+      Knowledge Assessment
+    </span>
+
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container assessment-layout">
+
+    <!-- BACK NAVIGATION -->
+      <a href="../student/Dashboard.html" class="back-link">
+        ← Back to Dashboard
+    </a>
+
+    <!-- INTRODUCTION -->
+    <section class="assessment-intro">
+
+      <span class="eyebrow">
+        DISCOVER YOUR STARTING POINT
+      </span>
+
+      <h2>
+        How Much Do You Know About Scholarships?
+      </h2>
+
+      <p>
+        Everyone begins their journey with different knowledge
+        and experiences. This short assessment helps Ubuntu Gojo
+        understand what you already know and identify areas
+        where additional learning could be useful.
+      </p>
+
+      <div class="assessment-info">
+        <span>10 Questions</span>
+        <span>9 Learning Topics</span>
+        <span>Personalized Guidance</span>
+      </div>
+
+    </section>
+
+    <!-- ASSESSMENT CARD -->
+    <section class="quiz-card" aria-label="Initial knowledge assessment">
+
+      <!-- QUESTION HEADER -->
+      <div class="quiz-top">
+
+        <div>
+          <span class="eyebrow">
+            INITIAL KNOWLEDGE CHECK
+          </span>
+
+          <h3 id="question-counter">
+            Preparing your assessment...
+          </h3>
+        </div>
+
+        <span id="progress-percentage">
+          0%
+        </span>
+
+      </div>
+
+      <!-- PROGRESS BAR -->
+      <div
+        id="quiz-progress"
+        class="quiz-progress"
+        role="progressbar"
+        aria-label="Questions answered"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+      >
+        <div id="quiz-progress-fill"></div>
+      </div>
+
+      <!-- STATUS / ERROR MESSAGE -->
+      <p
+        id="assessment-message"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+      <!-- QUESTION FORM -->
+      <form id="assessment-form">
+
+        <!-- JavaScript loads questions here -->
+        <div id="question-container">
+
+          <p>
+            Loading your assessment questions...
+          </p>
+
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="quiz-actions">
+
+          <!-- Previous question -->
+          <button
+            type="button"
+            id="previous-question"
+            class="secondary-btn"
+            disabled
+          >
+            ← Previous
+          </button>
+
+          <!-- Questions 1–9 -->
+          <button
+            type="button"
+            id="next-question"
+            class="primary-btn"
+          >
+            Next Question →
+          </button>
+
+          <!-- Question 10 only -->
+          <button
+            type="submit"
+            id="submit-assessment"
+            class="primary-btn"
+            hidden
+          >
+            Submit Assessment →
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <!-- INFORMATION NOTE -->
+    <p class="assessment-note">
+      This assessment is intended to guide your learning.
+      It is not an admission test or a scholarship eligibility decision.
+    </p>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      Ubuntu Gojo | Learn &amp; Understand
+    </p>
+  </footer>
+
+</body>
+</html>

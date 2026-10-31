@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Explore your personalized scholarship learning path with Ubuntu Gojo."
+  >
+
+  <title>My Learning Path | Ubuntu Gojo</title>
+
+  <!-- Shared design -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Learning page design -->
+  <link rel="stylesheet" href="learning.css">
+
+  <!-- Learning functionality -->
+  <script src="learning.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="brand">
+      <h1>Ubuntu Gojo</h1>
+      <p>Your International Education Journey</p>
+    </div>
+
+    <span class="module-label">
+      Learn &amp; Understand
+    </span>
+
+  </header>
+
+  <main class="container learning-layout">
+
+    <!-- NAVIGATION -->
+    <a href="../student/Dashboard.html" class="back-link">
+        ← Back to Dashboard
+    </a>
+    <!-- INTRODUCTION -->
+    <section class="learning-intro">
+<section class="assessment-entry">
+    <div>
+        <span class="eyebrow">KNOW YOUR STARTING POINT</span>
+        <h2>Check Your Scholarship Knowledge</h2>
+        <p>
+            Take a short assessment to understand your current
+            knowledge and receive personalized learning guidance.
+        </p>
+    </div>
+
+    <a href="assessment.html" class="primary-btn">
+        Start Assessment →
+    </a>
+</section>
+      <span class="eyebrow">
+        YOUR LEARNING JOURNEY
+      </span>
+
+      <h2>Explore Your Learning Path.</h2>
+
+      <p>
+        Develop your understanding of scholarships and international
+        education at a pace that works for you. Explore different
+        levels, strengthen your knowledge, and continue learning
+        from where you are.
+      </p>
+
+    </section>
+
+    <!-- RECOMMENDATION SUMMARY -->
+    <section
+      id="learning-recommendation"
+      class="learning-recommendation"
+      hidden
+    >
+
+      <div>
+        <span class="eyebrow">
+          YOUR SUGGESTED STARTING POINT
+        </span>
+
+        <h3 id="suggested-level">Recommended Level</h3>
+
+        <p id="suggested-level-description"></p>
+      </div>
+
+      <span class="recommendation-tag">
+        Suggested for You
+      </span>
+
+    </section>
+
+    <!-- LEVEL SELECTION -->
+    <section class="learning-levels">
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          CHOOSE WHERE TO BEGIN
+        </span>
+
+        <h2>Three Levels. One Learning Journey.</h2>
+
+        <p>
+          Your recommended level is a starting suggestion,
+          not a restriction. You can explore any available level.
+        </p>
+
+      </div>
+
+      <div class="learning-level-grid">
+
+        <!-- FOUNDATION -->
+        <button
+          type="button"
+          class="learning-level-card"
+          data-level="foundation"
+          aria-pressed="false"
+        >
+
+          <span class="level-step">LEVEL 01</span>
+
+          <span class="level-icon" aria-hidden="true">🌱</span>
+
+          <strong>Foundation</strong>
+
+          <span class="level-description">
+            Understand the essential concepts of scholarships,
+            international education, and student preparation.
+          </span>
+
+          <span class="level-lesson-count">
+            9 Lessons
+          </span>
+
+          <span class="level-action">
+            Explore Foundation →
+          </span>
+
+        </button>
+
+        <!-- DEVELOPING -->
+        <button
+          type="button"
+          class="learning-level-card"
+          data-level="developing"
+          aria-pressed="false"
+        >
+
+          <span class="level-step">LEVEL 02</span>
+
+          <span class="level-icon" aria-hidden="true">📚</span>
+
+          <strong>Developing</strong>
+
+          <span class="level-description">
+            Strengthen your research, eligibility understanding,
+            profile development, and application preparation.
+          </span>
+
+          <span class="level-lesson-count">
+            9 Lessons
+          </span>
+
+          <span class="level-action">
+            Explore Developing →
+          </span>
+
+        </button>
+
+        <!-- ADVANCED -->
+        <button
+          type="button"
+          class="learning-level-card"
+          data-level="advanced"
+          aria-pressed="false"
+        >
+
+          <span class="level-step">LEVEL 03</span>
+
+          <span class="level-icon" aria-hidden="true">🎓</span>
+
+          <strong>Advanced</strong>
+
+          <span class="level-description">
+            Explore more detailed scholarship research,
+            application strategies, and preparation decisions.
+          </span>
+
+          <span class="level-lesson-count">
+            9 Lessons
+          </span>
+
+          <span class="level-action">
+            Explore Advanced →
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- SELECTED LEVEL -->
+    <section
+      id="selected-level-section"
+      class="selected-level-section"
+    >
+
+      <div class="section-heading">
+
+        <span class="eyebrow">
+          EXPLORE YOUR LESSONS
+        </span>
+
+        <h2 id="selected-level-title">
+          Select a Learning Level
+        </h2>
+
+        <p id="selected-level-description">
+          Choose Foundation, Developing, or Advanced above
+          to explore its available lessons.
+        </p>
+
+      </div>
+
+      <!-- LESSON LOADING / ERROR MESSAGE -->
+      <p
+        id="learning-message"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+      <!-- LESSON CARDS -->
+      <div
+        id="learning-lessons"
+        class="learning-lessons-grid"
+      >
+        <!-- JavaScript will insert lessons from the API -->
+      </div>
+
+    </section>
+
+    <!-- LEARNING NOTE -->
+    <section class="learning-note">
+
+      <div>
+        <h3>Learn What You Need, When You Need It.</h3>
+
+        <p>
+          You do not have to repeat every lesson if you already
+          understand the topic. Your learning journey should
+          build on your existing knowledge and preparation goals.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Ubuntu Gojo | Learn &amp; Understand</p>
+  </footer>
+
+</body>
+</html>

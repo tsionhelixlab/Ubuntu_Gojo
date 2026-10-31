@@ -1,0 +1,368 @@
+
+/* ==========================================
+   UBUNTU GOJO
+   PERSONALIZED RECOMMENDATIONS
+========================================== */
+
+/* PAGE LAYOUT */
+
+.recommendations-layout {
+  max-width: 1100px;
+  padding-top: 36px;
+  padding-bottom: 80px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 34px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* INTRODUCTION */
+
+.recommendations-intro {
+  margin-bottom: 35px;
+}
+
+.recommendations-intro h2 {
+  margin: 0 0 16px;
+  color: var(--navy);
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.2;
+  letter-spacing: -1.4px;
+}
+
+.recommendations-intro p {
+  max-width: 750px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* STATUS MESSAGE */
+
+#recommendations-message {
+  margin: 20px 0;
+  color: var(--primary-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#recommendations-message:empty {
+  display: none;
+}
+
+/* RECOMMENDATION HERO */
+
+.recommendation-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  align-items: center;
+  gap: 35px;
+
+  padding: 43px;
+  border: 1px solid #d6e9dd;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 90% 5%,
+      rgba(61, 172, 109, 0.16),
+      transparent 42%
+    ),
+    linear-gradient(125deg, #ffffff, #eff9f3);
+
+  box-shadow: var(--shadow);
+}
+
+.recommendation-hero-content h2 {
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.recommendation-hero-content p {
+  max-width: 580px;
+  margin: 0 0 25px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* SCORE DISPLAY */
+
+.score-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 205px;
+  padding: 25px;
+
+  background: var(--white);
+  border: 1px solid #d9e9df;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.score-label {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+#assessment-score {
+  color: var(--primary);
+  font-size: 51px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -2px;
+}
+
+#score-description {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* SECTION SPACING */
+
+.learning-gaps-section,
+.recommended-lessons-section {
+  margin-top: 65px;
+}
+
+.learning-gaps-section .section-heading,
+.recommended-lessons-section .section-heading {
+  margin-bottom: 25px;
+}
+
+/* KNOWLEDGE GAPS */
+
+.learning-gaps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.gap-card {
+  padding: 25px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.gap-card h3 {
+  margin: 0 0 10px;
+  color: var(--navy);
+  font-size: 17px;
+}
+
+.gap-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.gap-label {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+
+  background: #fff5e8;
+  border-radius: 6px;
+
+  color: #976323;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* RECOMMENDED LESSONS */
+
+.recommended-lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.lesson-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 25px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.lesson-card:hover {
+  transform: translateY(-4px);
+  border-color: #a7d5b8;
+  box-shadow: var(--shadow-hover);
+}
+
+.lesson-card h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.lesson-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.lesson-level {
+  align-self: flex-start;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.lesson-card a {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 12px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.lesson-card a:hover {
+  text-decoration: underline;
+}
+
+/* EMPTY RESULTS */
+
+.empty-recommendation {
+  padding: 26px;
+  background: var(--white);
+  border: 1px dashed #c8d8cf;
+  border-radius: 14px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* JOURNEY BANNER */
+
+.journey-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+
+  margin-top: 65px;
+  padding: 38px 42px;
+
+  background: linear-gradient(125deg, #142b3b, #21495a);
+  color: var(--white);
+  border-radius: 20px;
+}
+
+.journey-banner h2 {
+  margin: 0 0 10px;
+  color: var(--white);
+  font-size: 25px;
+  letter-spacing: -0.6px;
+}
+
+.journey-banner p {
+  max-width: 570px;
+  margin: 0;
+  color: #cbdce2;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.journey-banner .primary-btn {
+  flex-shrink: 0;
+  background: #36a96b;
+  border-color: #36a96b;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+  .recommendation-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .score-display {
+    min-height: 150px;
+  }
+
+  .recommended-lessons-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .journey-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .recommendations-layout {
+    padding-top: 25px;
+  }
+
+  .recommendations-intro h2 {
+    font-size: 30px;
+  }
+
+  .recommendation-hero {
+    padding: 28px 23px;
+    gap: 25px;
+  }
+
+  .learning-gaps-grid,
+  .recommended-lessons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .learning-gaps-section,
+  .recommended-lessons-section {
+    margin-top: 45px;
+  }
+
+  .journey-banner {
+    margin-top: 45px;
+    padding: 30px 24px;
+  }
+
+  .journey-banner h2 {
+    font-size: 22px;
+  }
+
+  .journey-banner .primary-btn {
+    width: 100%;
+  }
+}

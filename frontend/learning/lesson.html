@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Explore personalized scholarship and international education lessons with Ubuntu Gojo."
+  >
+
+  <title>Learning Lesson | Ubuntu Gojo</title>
+
+  <!-- Shared styling -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Individual lesson styling -->
+  <link rel="stylesheet" href="lesson.css">
+
+  <!-- Lesson functionality -->
+  <script src="lesson.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="brand">
+      <h1>Ubuntu Gojo</h1>
+      <p>Your International Education Journey</p>
+    </div>
+
+    <span class="module-label">
+      Learn &amp; Understand
+    </span>
+
+  </header>
+
+  <main class="container lesson-layout">
+
+    <!-- BACK NAVIGATION -->
+
+      <a href="../student/Dashboard.html" class="back-link">
+        ← Back to Dashboard
+    </a>
+
+    <!-- LOADING AND ERROR MESSAGE -->
+
+    <p
+      id="lesson-message"
+      role="status"
+      aria-live="polite"
+    >
+      Loading your lesson...
+    </p>
+
+    <!-- LESSON CONTENT -->
+
+    <div id="lesson-content" hidden>
+
+      <!-- LESSON INTRODUCTION -->
+
+      <section class="lesson-intro">
+
+        <div class="lesson-meta">
+
+          <span id="lesson-level" class="lesson-level">
+            Learning Level
+          </span>
+
+          <span id="lesson-topic" class="lesson-topic">
+            Learning Topic
+          </span>
+
+        </div>
+
+        <h2 id="lesson-title">
+          Lesson Title
+        </h2>
+
+        <p id="lesson-description">
+          Lesson description will appear here.
+        </p>
+
+      </section>
+
+      <!-- MAIN LESSON LAYOUT -->
+
+      <div class="lesson-main-grid">
+
+        <!-- MAIN CONTENT -->
+
+        <article class="lesson-article">
+
+          <!-- LEARNING OBJECTIVES -->
+
+          <section class="lesson-objectives">
+
+            <span class="eyebrow">
+              YOUR LEARNING GOALS
+            </span>
+
+            <h3>What You'll Learn</h3>
+
+            <div id="lesson-objectives">
+              <!-- Objectives inserted by JavaScript -->
+            </div>
+
+          </section>
+
+          <!-- LESSON MATERIAL -->
+
+          <section class="lesson-material">
+
+            <span class="eyebrow">
+              LEARNING MATERIAL
+            </span>
+
+            <h3>Explore This Lesson</h3>
+
+            <div id="lesson-body">
+              <!-- Actual database lesson content -->
+            </div>
+
+          </section>
+
+          <!-- KEY TAKEAWAYS -->
+
+          <section
+            id="takeaways-section"
+            class="lesson-takeaways"
+            hidden
+          >
+
+            <span class="eyebrow">
+              REMEMBER THIS
+            </span>
+
+            <h3>Key Takeaways</h3>
+
+            <div id="lesson-takeaways">
+              <!-- Key takeaways inserted by JavaScript -->
+            </div>
+
+          </section>
+
+          <!-- ADDITIONAL MATERIALS -->
+
+          <section
+            class="lesson-extra"
+            id="materials-section"
+            hidden
+          >
+            <h3>Learning resources and interactive diagrams</h3>
+            <div id="lesson-resources"></div>
+          </section>
+
+          <!-- ACTIVITIES -->
+
+          <section
+            class="lesson-extra"
+            id="activities-section"
+            hidden
+          >
+            <h3>Practice activities</h3>
+            <div id="lesson-activities"></div>
+          </section>
+
+          <!-- QUIZ -->
+
+          <section
+            class="lesson-extra"
+            id="quiz-section"
+            hidden
+          >
+            <h3>Check your understanding</h3>
+
+            <form id="lesson-quiz"></form>
+
+            <p
+              id="quiz-result"
+              role="status"
+            ></p>
+          </section>
+
+        </article>
+
+        <!-- LESSON SIDEBAR -->
+
+        <aside class="lesson-sidebar">
+
+          <div class="lesson-sidebar-card">
+
+            <span class="eyebrow">
+              YOUR LEARNING JOURNEY
+            </span>
+
+            <h3>Lesson Progress</h3>
+
+            <p id="lesson-progress-text">
+              Complete this lesson when you finish reviewing
+              its learning material.
+            </p>
+
+            <div
+              class="lesson-progress-track"
+              role="progressbar"
+              aria-label="Lesson completion"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              id="lesson-progress-track"
+            >
+              <div
+                id="lesson-progress-fill"
+                class="lesson-progress-fill"
+              ></div>
+            </div>
+
+            <button
+              type="button"
+              id="complete-lesson-btn"
+              class="primary-btn"
+            >
+              Mark as Completed ✓
+            </button>
+
+            <p
+              id="completion-message"
+              role="status"
+              aria-live="polite"
+            ></p>
+
+          </div>
+
+          <div class="lesson-help-card">
+
+            <h3>Learning at Your Own Pace</h3>
+
+            <p>
+              You can revisit lessons whenever you need.
+              Your learning path is designed to build on
+              what you already understand.
+            </p>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+      <!-- LESSON NAVIGATION -->
+
+      <nav
+        class="lesson-navigation"
+        aria-label="Lesson navigation"
+      >
+
+        <a
+          href="learning.html"
+          class="secondary-btn"
+        >
+          ← All Lessons
+        </a>
+
+        <a
+          href="learning.html"
+          id="next-lesson-link"
+          class="primary-btn"
+          hidden
+        >
+          Next Lesson →
+        </a>
+
+      </nav> 
+
+     <!-- FINAL LEARNING PATH SECTION -->
+
+<section id="journey-next-step" class="journey-next-step" hidden>
+
+  <h2>You've Reached the End of Your Learning Path!</h2>
+
+  <p>
+    Now it's time to apply what you've learned
+    to your own scholarship journey.
+  </p>
+
+  <a href="learning.html" class="journey-btn">
+    Continue to My Journey →
+  </a>
+
+</section>

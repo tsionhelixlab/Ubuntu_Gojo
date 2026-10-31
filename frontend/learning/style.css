@@ -1,0 +1,590 @@
+
+/* ==========================================
+   UBUNTU GOJO
+   LEARN & UNDERSTAND — WELCOME PAGE
+========================================== */
+
+/* 01. DESIGN VARIABLES */
+
+:root {
+  --primary: #218653;
+  --primary-dark: #145c39;
+  --primary-hover: #176b42;
+  --primary-light: #eaf7ef;
+
+  --navy: #142b3b;
+  --navy-light: #244255;
+
+  --text: #273b49;
+  --muted: #697d89;
+
+  --background: #f5f8f7;
+  --white: #ffffff;
+  --border: #e1e9e6;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow:
+    0 8px 30px rgba(20, 43, 59, 0.045);
+
+  --shadow-hover:
+    0 18px 40px rgba(20, 43, 59, 0.10);
+}
+
+/* 02. RESET */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--text);
+  font-family:
+    "Segoe UI",
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* 03. HEADER */
+
+.header {
+  min-height: 86px;
+  padding: 18px max(5%, calc((100% - 1180px) / 2));
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand h1 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.3;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.2px;
+}
+
+.module-label {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 9px 17px;
+  border: 1px solid #d5eadd;
+  border-radius: 50px;
+
+  background: var(--primary-light);
+  color: var(--primary-dark);
+
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 04. MAIN CONTAINER */
+
+.container {
+  width: min(100% - 40px, 1180px);
+  margin: 0 auto;
+  padding: 46px 0 75px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 18px;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+/* 05. BUTTONS */
+
+.primary-btn,
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 49px;
+  padding: 13px 24px;
+
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 6px 16px rgba(33, 134, 83, 0.16);
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(33, 134, 83, 0.20);
+}
+
+.secondary-btn {
+  background: var(--white);
+  border-color: var(--border);
+  color: var(--navy);
+}
+
+.secondary-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #8ed2ac;
+  outline-offset: 4px;
+}
+
+/* 06. HERO / WELCOME SECTION */
+
+.welcome {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding: 75px 65px;
+  border: 1px solid #dcece3;
+  border-radius: var(--radius-lg);
+
+  background:
+    radial-gradient(
+      circle at 95% 10%,
+      rgba(56, 170, 105, 0.17),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 80% 100%,
+      rgba(33, 134, 83, 0.07),
+      transparent 40%
+    ),
+    linear-gradient(
+      125deg,
+      #ffffff 0%,
+      #f3fbf6 100%
+    );
+
+  box-shadow: var(--shadow);
+}
+
+/* Decorative circles */
+
+.welcome::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: 320px;
+  height: 320px;
+  right: -115px;
+  top: -140px;
+
+  border: 48px solid rgba(33, 134, 83, 0.055);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.welcome::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: 180px;
+  height: 180px;
+  right: 120px;
+  bottom: -115px;
+
+  border: 28px solid rgba(33, 134, 83, 0.045);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.welcome h2 {
+  max-width: 760px;
+  margin: 0 0 23px;
+
+  color: var(--navy);
+  font-size: clamp(34px, 4.5vw, 54px);
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -2px;
+}
+
+.welcome p {
+  max-width: 650px;
+  margin: 0 0 32px;
+
+  color: #607580;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.welcome .primary-btn {
+  padding: 15px 29px;
+}
+
+/* 07. LEARNING LEVEL SECTION */
+
+.learning-introduction {
+  margin-top: 75px;
+}
+
+.section-heading {
+  margin-bottom: 31px;
+}
+
+.section-heading h2 {
+  margin: 0 0 9px;
+
+  color: var(--navy);
+  font-size: clamp(25px, 3vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.3;
+}
+
+.section-heading p {
+  max-width: 670px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 08. LEVEL CARDS */
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.level-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  min-height: 310px;
+  padding: 31px 29px;
+
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Small top accent */
+
+.level-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--primary);
+}
+
+.level-card:nth-child(2)::before {
+  background: #2e789b;
+}
+
+.level-card:nth-child(3)::before {
+  background: #b78a42;
+}
+
+.level-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-hover);
+  border-color: #b6d9c4;
+}
+
+.level-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 49px;
+  height: 49px;
+
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border-radius: 13px;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.level-card:nth-child(2) .level-number {
+  background: #eaf3f9;
+  color: #286b8e;
+}
+
+.level-card:nth-child(3) .level-number {
+  background: #faf3e6;
+  color: #98702e;
+}
+
+.level-card h3 {
+  margin: 24px 0 11px;
+
+  color: var(--navy);
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.level-card p {
+  margin: 0 0 25px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.level-tag {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 19px;
+
+  border-top: 1px solid var(--border);
+  color: var(--primary);
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.level-card:nth-child(2) .level-tag {
+  color: #286b8e;
+}
+
+.level-card:nth-child(3) .level-tag {
+  color: #98702e;
+}
+
+/* 09. ASSESSMENT INVITATION */
+
+.assessment-banner {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+
+  margin-top: 70px;
+  padding: 43px 46px;
+
+  background:
+    radial-gradient(
+      circle at 95% 5%,
+      rgba(77, 171, 119, 0.18),
+      transparent 36%
+    ),
+    linear-gradient(125deg, #142b3b, #1d4050);
+
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.assessment-banner h2 {
+  margin: 0 0 12px;
+  color: var(--white);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.assessment-banner p {
+  max-width: 600px;
+  margin: 0;
+
+  color: #c7d8df;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.assessment-banner .primary-btn {
+  flex-shrink: 0;
+  background: #37a96b;
+  border-color: #37a96b;
+  box-shadow: none;
+}
+
+.assessment-banner .primary-btn:hover {
+  background: #45ba7a;
+}
+
+/* 10. FOOTER */
+
+.footer {
+  padding: 28px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* 11. RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+  .level-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .assessment-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 650px) {
+  .header {
+    min-height: 75px;
+    padding: 15px 20px;
+  }
+
+  .brand h1 {
+    font-size: 21px;
+  }
+
+  .brand p {
+    font-size: 10px;
+  }
+
+  .module-label {
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+
+  .container {
+    width: min(100% - 30px, 1180px);
+    padding: 25px 0 45px;
+  }
+
+  .welcome {
+    padding: 46px 25px;
+  }
+
+  .welcome h2 {
+    font-size: 35px;
+    letter-spacing: -1.2px;
+  }
+
+  .welcome p {
+    font-size: 14px;
+  }
+
+  .learning-introduction {
+    margin-top: 48px;
+  }
+
+  .level-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .level-card {
+    min-height: auto;
+    padding: 27px 24px;
+  }
+
+  .assessment-banner {
+    margin-top: 48px;
+    padding: 34px 25px;
+  }
+
+  .assessment-banner h2 {
+    font-size: 23px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Explore your personalized scholarship learning recommendations with Ubuntu Gojo."
+  >
+
+  <title>My Learning Recommendations | Ubuntu Gojo</title>
+
+  <!-- Shared Ubuntu Gojo design -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Recommendation page design -->
+  <link rel="stylesheet" href="recommendation.css">
+
+  <!-- Recommendation functionality -->
+  <script src="recommendation.js" defer></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+
+    <div class="brand">
+      <h1>Ubuntu Gojo</h1>
+      <p>Your International Education Journey</p>
+    </div>
+
+    <span class="module-label">
+      Personalized Guidance
+    </span>
+
+  </header>
+
+  <main class="container recommendations-layout">
+
+    <!-- BACK NAVIGATION -->
+      <a href="../student/Dashboard.html" class="back-link">
+        ← Back to Dashboard
+    </a>
+
+    <!-- INTRODUCTION -->
+    <section class="recommendations-intro">
+
+      <span class="eyebrow">
+        YOUR PERSONALIZED LEARNING JOURNEY
+      </span>
+
+      <h2>Your Next Steps Start Here.</h2>
+
+      <p>
+        Your assessment helps Ubuntu Gojo understand your current
+        knowledge and recommend a learning path that builds on
+        what you already know.
+      </p>
+
+    </section>
+
+    <!-- LOADING / ERROR STATUS -->
+    <p
+      id="recommendations-message"
+      role="status"
+      aria-live="polite"
+    >
+      Loading your personalized recommendations...
+    </p>
+
+    <!-- RESULTS: HIDDEN UNTIL DATA LOADS -->
+    <div id="recommendations-content" hidden>
+
+      <!-- RECOMMENDED STARTING LEVEL -->
+      <section class="recommendation-hero">
+
+        <div class="recommendation-hero-content">
+
+          <span class="eyebrow">
+            YOUR RECOMMENDED STARTING POINT
+          </span>
+
+          <h2 id="recommended-level">
+            Preparing your recommendation...
+          </h2>
+
+          <p id="level-explanation"></p>
+
+          <a
+            href="learning.html"
+            id="start-learning-btn"
+            class="primary-btn"
+          >
+            Start My Learning Journey →
+          </a>
+
+        </div>
+
+        <!-- ASSESSMENT SCORE -->
+        <div class="score-display">
+
+          <span class="score-label">
+            INITIAL ASSESSMENT
+          </span>
+
+          <strong id="assessment-score">--</strong>
+
+          <span id="score-description">
+            Your knowledge check
+          </span>
+
+        </div>
+
+      </section>
+
+      <!-- KNOWLEDGE GAP ANALYSIS -->
+      <section class="learning-gaps-section">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">
+            YOUR LEARNING PRIORITIES
+          </span>
+
+          <h2>Areas Worth Strengthening</h2>
+
+          <p>
+            These recommendations highlight topics where
+            additional learning may help you prepare more confidently.
+          </p>
+
+        </div>
+
+        <div id="learning-gaps" class="learning-gaps-grid">
+          <!-- JavaScript inserts learning gaps here -->
+        </div>
+
+      </section>
+
+      <!-- RECOMMENDED LESSONS -->
+      <section class="recommended-lessons-section">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">
+            RECOMMENDED FOR YOU
+          </span>
+
+          <h2>Your Suggested Learning Resources</h2>
+
+          <p>
+            Explore lessons connected to your assessment results
+            and continue developing your scholarship knowledge.
+          </p>
+
+        </div>
+
+        <div id="recommended-lessons" class="recommended-lessons-grid">
+          <!-- JavaScript inserts recommended lessons here -->
+        </div>
+
+      </section>
+
+      <!-- CONTINUE JOURNEY -->
+      <section class="journey-banner">
+
+        <div>
+
+          <h2>Every Step Builds Your Future.</h2>
+
+          <p>
+            Your learning journey can grow as your knowledge,
+            goals, and preparation develop.
+          </p>
+
+        </div>
+
+        <a href="learning.html" class="primary-btn">
+          Explore My Learning Path →
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Ubuntu Gojo | Learn &amp; Understand</p>
+  </footer>
+
+</body>
+</html>
