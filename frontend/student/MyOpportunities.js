@@ -1,8 +1,437 @@
-const token=localStorage.getItem('token');const $=id=>document.getElementById(id);const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const eligibilityLabels={ELIGIBLE:'Eligible',POTENTIALLY_ELIGIBLE:'Potentially eligible',REQUIREMENTS_NOT_MET:'Requirements not met'};const statusLabels={RESEARCHING:'Researching',CONSIDERING:'Considering',PLANNING_TO_APPLY:'Planning to apply',APPLIED:'Applied'};
-if(!token)location.href='../auth/signin.html';
-async function api(path,options={}){const r=await fetch(`${API_BASE_URL}${path}`,{...options,headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json',...(options.headers||{})}});const d=await r.json().catch(()=>({}));if(r.status===401){localStorage.clear();location.href='../auth/signin.html';throw Error('Please sign in again.');}if(!r.ok)throw Error(d.message||'Request failed');return d;}
-function pill(status){const cls=status==='ELIGIBLE'?'eligible':status==='REQUIREMENTS_NOT_MET'?'notmet':'potential';return `<span class="pill ${cls}">${esc(eligibilityLabels[status]||'Needs assessment')}</span>`;}
-async function load(){try{const d=await api('/matching/saved');const list=d.opportunities||[];$('savedCount').textContent=`${list.length} saved`;const root=$('savedResults');root.replaceChildren();if(!list.length){root.innerHTML='<div class="empty"><h3>Your tracker is ready</h3><p>Save opportunities from Explore and they will appear here.</p><a class="official" href="Explore.html">Explore opportunities →</a></div>';return;}for(const item of list){const o=item.opportunity;const card=document.createElement('article');card.className='op-card';card.innerHTML=`<div class="card-top"><div><h3>${esc(o.title)}</h3><div class="provider">${esc(o.provider||'Provider not specified')}</div></div></div><div class="pills">${pill(item.eligibility.status)}<span class="pill">${esc(o.subtype_name||o.category||'Opportunity')}</span></div><p class="summary">${esc((o.description||'Description not provided.').slice(0,180))}</p><div class="meta"><span><i class="fa-regular fa-calendar"></i>${esc(item.deadline?.label||'Deadline not provided')}</span></div><label class="tracker-label" style="display:block;font-size:12px;color:#626a74;font-weight:700">MY STATUS<select data-status="${o.opportunity_id}" style="display:block;margin-top:7px;width:100%;padding:11px;border:1px solid #ddd7ce;border-radius:9px;background:#fff">${Object.entries(statusLabels).map(([value,label])=>`<option value="${value}" ${item.savedStatus===value?'selected':''}>${label}</option>`).join('')}</select></label><div class="card-actions"><button class="details" data-details="${o.opportunity_id}">View details</button><button data-remove="${o.opportunity_id}">Remove from list</button></div>`;card.querySelector('[data-status]').addEventListener('change',async e=>{try{await api(`/matching/saved/${o.opportunity_id}`,{method:'PATCH',body:JSON.stringify({status:e.target.value})});}catch(err){alert(err.message);load();}});card.querySelector('[data-remove]').addEventListener('click',async()=>{if(!confirm('Remove this opportunity from My Opportunities?'))return;try{await api(`/matching/saved/${o.opportunity_id}`,{method:'DELETE'});load();}catch(err){alert(err.message);}});card.querySelector('[data-details]').addEventListener('click',()=>details(o.opportunity_id));root.appendChild(card);}}catch(e){$('savedResults').innerHTML=`<div class="empty"><h3>Could not load saved opportunities</h3><p>${esc(e.message)}. Check that the Explore database migration has been applied.</p></div>`;}}
-async function details(id){$('detailBackdrop').hidden=false;$('detailContent').innerHTML='<p>Loading…</p>';try{const d=await api(`/matching/opportunities/${id}`);const x=d.result,o=x.opportunity;const checks=(x.eligibility.checks||[]).map(c=>`<div class="check-row"><strong>${esc(c.requirement)}</strong> <span class="state ${esc(c.state)}">${esc(c.state)}</span><p>${esc(c.explanation)}</p></div>`).join('')||'<p>No confirmed mandatory requirements are recorded yet.</p>';$('detailContent').innerHTML=`<h2>${esc(o.title)}</h2><p class="provider">${esc(o.provider||'Provider not specified')}</p><div class="pills">${pill(x.eligibility.status)}<span class="pill">${esc(x.classification.label)}</span></div><div class="detail-section"><h3>About</h3><p>${esc(o.description||'Description not provided.')}</p><p>Deadline: ${esc(x.deadline.label)}</p>${o.application_url?`<a class="official" href="${esc(o.application_url)}" target="_blank" rel="noopener noreferrer">Official page ↗</a>`:''}</div><div class="detail-section"><h3>Eligibility breakdown</h3>${checks}</div><div class="detail-section"><h3>Goal fit</h3><p>${esc(x.goalFit.explanation)}</p></div><div class="detail-section"><h3>Information to verify</h3><ul>${(x.dataQuality.warnings||[]).map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`;}catch(e){$('detailContent').innerHTML=`<p>${esc(e.message)}</p>`;}}
-$('closeDetails').onclick=()=>$('detailBackdrop').hidden=true;$('detailBackdrop').onclick=e=>{if(e.target===$('detailBackdrop'))$('detailBackdrop').hidden=true;};document.addEventListener('keydown',e=>{if(e.key==='Escape')$('detailBackdrop').hidden=true;});load();
+ "use strict";
+
+// Get the existing login token
+const token = localStorage.getItem("token");
+
+const $ = id => document.getElementById(id);
+
+// Escape HTML to protect displayed data
+const esc = value =>
+  String(value ?? "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+
+// Eligibility labels
+const eligibilityLabels = {
+  ELIGIBLE: "Eligible",
+  POTENTIALLY_ELIGIBLE: "Potentially eligible",
+  REQUIREMENTS_NOT_MET: "Requirements not met"
+};
+
+// Opportunity tracking statuses
+const statusLabels = {
+  RESEARCHING: "Researching",
+  CONSIDERING: "Considering",
+  PLANNING_TO_APPLY: "Planning to apply",
+  APPLIED: "Applied"
+};
+
+// Redirect users who are not signed in
+if (!token) {
+  location.href = "../auth/signin.html";
+}
+
+// API request helper
+async function api(path, options = {}) {
+  const response = await fetch(${API_BASE_URL}${path}, {
+    ...options,
+    headers: {
+      Authorization: Bearer ${token},
+      "Content-Type": "application/json",
+      ...(options.headers  {})
+    }
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (response.status === 401) {
+    localStorage.clear();
+    location.href = "../auth/signin.html";
+    throw new Error("Please sign in again.");
+  }
+
+  if (!response.ok) {
+    throw new Error(data.message  "Request failed.");
+  }
+
+  return data;
+}
+
+// Display eligibility status
+function pill(status) {
+  const className =
+    status === "ELIGIBLE"
+      ? "eligible"
+      : status === "REQUIREMENTS_NOT_MET"
+        ? "notmet"
+        : "potential";
+
+  return `
+    <span class="pill ${className}">
+      ${esc(eligibilityLabels[status]  "Needs assessment")}
+    </span>
+  `;
+}
+
+// Load saved opportunities
+async function load() {
+  try {
+    const data = await api("/matching/saved");
+    const list = data.opportunities  [];
+
+    $("savedCount").textContent = `${list.length} saved`;
+
+    const root = $("savedResults");
+    root.replaceChildren();
+
+    if (!list.length) {
+      root.innerHTML = `
+        <div class="empty">
+          <h3>Your tracker is ready</h3>
+          <p>
+            Save opportunities from Explore and they will appear here.
+          </p>
+          <a class="official" href="Explore.html">
+            Explore opportunities →
+          </a>
+        </div>
+      `;
+
+      return;
+    }
+
+    // Display each saved opportunity
+    for (const item of list) {
+      const opportunity = item.opportunity;
+      const opportunityId = opportunity.opportunity_id;
+
+      const card = document.createElement("article");
+      card.className = "op-card";
+
+      card.innerHTML = `
+        <div class="card-top">
+          <div>
+            <h3>${esc(opportunity.title)}</h3>
+
+            <div class="provider">
+              ${esc(opportunity.provider  "Provider not specified")}
+            </div>
+          </div>
+        </div>
+
+        <div class="pills">
+          ${pill(item.eligibility.status)}
+
+          <span class="pill">
+            ${esc(
+              opportunity.subtype_name 
+              opportunity.category 
+              "Opportunity"
+            )}
+          </span>
+        </div>
+
+        <p class="summary">
+          ${esc(
+            (opportunity.description  "Description not provided.")
+              .slice(0, 180)
+          )}
+        </p>
+ <div class="meta">
+          <span>
+            <i class="fa-regular fa-calendar"></i>
+            ${esc(item.deadline?.label  "Deadline not provided")}
+          </span>
+        </div>
+
+        <label
+          class="tracker-label"
+          style="display:block;font-size:12px;color:#626a74;font-weight:700"
+        >
+          MY STATUS
+
+          <select
+            data-status="${esc(opportunityId)}"
+            style="display:block;margin-top:7px;width:100%;padding:11px;border:1px solid #ddd7ce;border-radius:9px;background:#fff"
+          >
+            ${Object.entries(statusLabels).map(([value, label]) => `
+              <option
+                value="${value}"
+                ${item.savedStatus === value ? "selected" : ""}
+              >
+                ${label}
+              </option>
+            `).join("")}
+          </select>
+        </label>
+
+        <div class="card-actions">
+
+          <button
+            class="details"
+            type="button"
+            data-details="${esc(opportunityId)}"
+          >
+            View details
+          </button>
+
+          <button
+            class="prepare-opportunity"
+            type="button"
+            data-prepare="${esc(opportunityId)}"
+          >
+            Prepare for this opportunity
+          </button>
+
+          <button
+            type="button"
+            data-remove="${esc(opportunityId)}"
+          >
+            Remove from list
+          </button>
+
+        </div>
+      `;
+
+      //Update opportunity tracking status
+
+      card.querySelector("[data-status]").addEventListener(
+        "change",
+        async event => {
+          try {
+            await api(`/matching/saved/${encodeURIComponent(opportunityId)}`, {
+              method: "PATCH",
+              body: JSON.stringify({
+                status: event.target.value
+              })
+            });
+
+          } catch (error) {
+            alert(error.message);
+            load();
+          }
+        }
+      );
+
+      // Remove opportunity from saved list
+      card.querySelector("[data-remove]").addEventListener(
+        "click",
+        async () => {
+          if (
+            !confirm(
+              "Remove this opportunity from My Opportunities?"
+            )
+          ) {
+            return;
+          }
+
+          try {
+            await api(
+              `/matching/saved/${encodeURIComponent(opportunityId)}`,
+              {
+                method: "DELETE"
+              }
+            );
+
+            await load();
+
+          } catch (error) {
+            alert(error.message);
+          }
+        }
+      );
+
+      // Open opportunity details
+      card.querySelector("[data-details]").addEventListener(
+        "click",
+        () => details(opportunityId)
+      );
+
+      // Create Preparation workspace
+      card.querySelector("[data-prepare]").addEventListener(
+        "click",
+        async event => {
+          const button = event.currentTarget;
+
+          if (
+            !confirm(
+              `Create a preparation workspace for "${opportunity.title}"?`
+            )
+          ) {
+            return;
+          }
+
+          button.disabled = true;
+          button.textContent = "Creating...";
+
+          try {
+            await api("/preparation/workspaces", {
+              method: "POST",
+
+              body: JSON.stringify({
+                opportunity_id: opportunityId,
+                title: opportunity.title,
+                description: opportunity.description  ""
+              })
+            });
+
+            alert(
+              "Preparation workspace created successfully!"
+            );
+
+            // Open the Preparation dashboard
+            window.location.href = "preparation/index.html";
+
+          } catch (error) {
+            alert(error.message);
+
+            button.disabled = false;
+            button.textContent = "Prepare for this opportunity";
+          }
+        }
+      );
+
+      root.appendChild(card);
+    }
+
+  } catch (error) {
+    $("savedResults").innerHTML = `
+      <div class="empty">
+        <h3>Could not load saved opportunities</h3>
+[11/1/2026 4:49 PM] Arsema: <p>
+          ${esc(error.message)}.
+          Check that the Explore database migration has been applied.
+        </p>
+      </div>
+    `;
+  }
+}
+
+// Display opportunity details
+async function details(id) {
+  $("detailBackdrop").hidden = false;
+  $("detailContent").innerHTML = "<p>Loading…</p>";
+
+  try {
+    const data = await api(
+      /matching/opportunities/${encodeURIComponent(id)}
+    );
+
+    const result = data.result;
+    const opportunity = result.opportunity;
+
+    const checks = (result.eligibility.checks  [])
+      .map(check => `
+        <div class="check-row">
+          <strong>${esc(check.requirement)}</strong>
+
+          <span class="state ${esc(check.state)}">
+            ${esc(check.state)}
+          </span>
+
+          <p>${esc(check.explanation)}</p>
+        </div>
+      `)
+      .join("")  `
+        <p>
+          No confirmed mandatory requirements are recorded yet.
+        </p>
+      `;
+
+    $("detailContent").innerHTML = `
+      <h2>${esc(opportunity.title)}</h2>
+
+      <p class="provider">
+        ${esc(opportunity.provider  "Provider not specified")}
+      </p>
+
+      <div class="pills">
+        ${pill(result.eligibility.status)}
+
+        <span class="pill">
+          ${esc(result.classification.label)}
+        </span>
+      </div>
+
+      <div class="detail-section">
+        <h3>About</h3>
+
+        <p>
+          ${esc(opportunity.description  "Description not provided.")}
+        </p>
+
+        <p>
+          Deadline: ${esc(result.deadline.label)}
+        </p>
+
+        ${
+          opportunity.application_url
+            ? `
+              <a
+                class="official"
+                href="${esc(opportunity.application_url)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Official page ↗️
+              </a>
+            `
+            : ""
+        }
+      </div>
+
+      <div class="detail-section">
+        <h3>Eligibility breakdown</h3>
+
+        ${checks}
+      </div>
+
+      <div class="detail-section">
+        <h3>Goal fit</h3>
+
+        <p>
+          ${esc(result.goalFit.explanation)}
+        </p>
+      </div>
+
+      <div class="detail-section">
+        <h3>Information to verify</h3>
+
+        <ul>
+          ${(result.dataQuality.warnings || [])
+            .map(warning => <li>${esc(warning)}</li>)
+            .join("")}
+        </ul>
+      </div>
+    `;
+
+  } catch (error) {
+    $("detailContent").innerHTML = `
+      <p>${esc(error.message)}</p>
+    `;
+  }
+}
+
+// Close opportunity details
+$("closeDetails").onclick = () => {
+  $("detailBackdrop").hidden = true;
+};
+
+$("detailBackdrop").onclick = event => {
+  if (event.target === $("detailBackdrop")) {
+    $("detailBackdrop").hidden = true;
+  }
+};
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    $("detailBackdrop").hidden = true;
+  }
+});
+
+// Initialize page
+load();
