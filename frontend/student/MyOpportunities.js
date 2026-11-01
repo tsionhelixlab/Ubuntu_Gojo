@@ -1,4 +1,5 @@
- "use strict";
+
+"use strict";
 
 // Get the existing login token
 const token = localStorage.getItem("token");
@@ -37,25 +38,25 @@ if (!token) {
 
 // API request helper
 async function api(path, options = {}) {
-  const response = await fetch(${API_BASE_URL}${path}, {
+  const response = await fetch(`${API_BASE_URL}${path}`, {
     ...options,
     headers: {
-      Authorization: Bearer ${token},
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
-      ...(options.headers  {})
+      ...(options.headers || {})
     }
   });
 
   const data = await response.json().catch(() => ({}));
 
   if (response.status === 401) {
-    localStorage.clear();
+    localStorage.removeItem("token");
     location.href = "../auth/signin.html";
     throw new Error("Please sign in again.");
   }
 
   if (!response.ok) {
-    throw new Error(data.message  "Request failed.");
+    throw new Error(data.message || "Request failed.");
   }
 
   return data;
@@ -72,7 +73,7 @@ function pill(status) {
 
   return `
     <span class="pill ${className}">
-      ${esc(eligibilityLabels[status]  "Needs assessment")}
+      ${esc(eligibilityLabels[status] || "Needs assessment")}
     </span>
   `;
 }
@@ -81,7 +82,7 @@ function pill(status) {
 async function load() {
   try {
     const data = await api("/matching/saved");
-    const list = data.opportunities  [];
+    const list = data.opportunities || [];
 
     $("savedCount").textContent = `${list.length} saved`;
 
@@ -107,6 +108,9 @@ async function load() {
     // Display each saved opportunity
     for (const item of list) {
       const opportunity = item.opportunity;
+
+      if (!opportunity) continue;
+
       const opportunityId = opportunity.opportunity_id;
 
       const card = document.createElement("article");
@@ -118,18 +122,18 @@ async function load() {
             <h3>${esc(opportunity.title)}</h3>
 
             <div class="provider">
-              ${esc(opportunity.provider  "Provider not specified")}
+              ${esc(opportunity.provider || "Provider not specified")}
             </div>
           </div>
         </div>
 
         <div class="pills">
-          ${pill(item.eligibility.status)}
+          ${pill(item.eligibility?.status)}
 
           <span class="pill">
             ${esc(
-              opportunity.subtype_name 
-              opportunity.category 
+              opportunity.subtype_name ||
+              opportunity.category ||
               "Opportunity"
             )}
           </span>
@@ -137,14 +141,15 @@ async function load() {
 
         <p class="summary">
           ${esc(
-            (opportunity.description  "Description not provided.")
+            (opportunity.description || "Description not provided.")
               .slice(0, 180)
           )}
         </p>
- <div class="meta">
+
+        <div class="meta">
           <span>
             <i class="fa-regular fa-calendar"></i>
-            ${esc(item.deadline?.label  "Deadline not provided")}
+            ${esc(item.deadline?.label || "Deadline not provided")}
           </span>
         </div>
 
@@ -197,22 +202,30 @@ async function load() {
         </div>
       `;
 
-      //Update opportunity tracking status
-
+      // Update opportunity tracking status
       card.querySelector("[data-status]").addEventListener(
         "change",
         async event => {
+          const select = event.currentTarget;
+          select.disabled = true;
+
           try {
-            await api(`/matching/saved/${encodeURIComponent(opportunityId)}`, {
-              method: "PATCH",
-              body: JSON.stringify({
-                status: event.target.value
-              })
-            });
+            await api(
+              `/matching/saved/${encodeURIComponent(opportunityId)}`,
+              {
+                method: "PATCH",
+                body: JSON.stringify({
+                  status: select.value
+                })
+              }
+            );
 
           } catch (error) {
             alert(error.message);
-            load();
+            await load();
+
+          } finally {
+            select.disabled = false;
           }
         }
       );
@@ -275,7 +288,7 @@ async function load() {
               body: JSON.stringify({
                 opportunity_id: opportunityId,
                 title: opportunity.title,
-                description: opportunity.description  ""
+                description: opportunity.description || ""
               })
             });
 
@@ -302,7 +315,7 @@ async function load() {
     $("savedResults").innerHTML = `
       <div class="empty">
         <h3>Could not load saved opportunities</h3>
-[11/1/2026 4:49 PM] Arsema: <p>
+        <p>
           ${esc(error.message)}.
           Check that the Explore database migration has been applied.
         </p>
@@ -318,13 +331,13 @@ async function details(id) {
 
   try {
     const data = await api(
-      /matching/opportunities/${encodeURIComponent(id)}
+      `/matching/opportunities/${encodeURIComponent(id)}`
     );
 
     const result = data.result;
     const opportunity = result.opportunity;
 
-    const checks = (result.eligibility.checks  [])
+    const checks = (result.eligibility?.checks || [])
       .map(check => `
         <div class="check-row">
           <strong>${esc(check.requirement)}</strong>
@@ -336,7 +349,7 @@ async function details(id) {
           <p>${esc(check.explanation)}</p>
         </div>
       `)
-      .join("")  `
+      .join("") || `
         <p>
           No confirmed mandatory requirements are recorded yet.
         </p>
@@ -346,14 +359,14 @@ async function details(id) {
       <h2>${esc(opportunity.title)}</h2>
 
       <p class="provider">
-        ${esc(opportunity.provider  "Provider not specified")}
+        ${esc(opportunity.provider || "Provider not specified")}
       </p>
 
       <div class="pills">
-        ${pill(result.eligibility.status)}
+        ${pill(result.eligibility?.status)}
 
         <span class="pill">
-          ${esc(result.classification.label)}
+          ${esc(result.classification?.label || "Unclassified")}
         </span>
       </div>
 
@@ -361,11 +374,11 @@ async function details(id) {
         <h3>About</h3>
 
         <p>
-          ${esc(opportunity.description  "Description not provided.")}
+          ${esc(opportunity.description || "Description not provided.")}
         </p>
 
         <p>
-          Deadline: ${esc(result.deadline.label)}
+          Deadline: ${esc(result.deadline?.label || "Not provided")}
         </p>
 
         ${
@@ -394,7 +407,7 @@ async function details(id) {
         <h3>Goal fit</h3>
 
         <p>
-          ${esc(result.goalFit.explanation)}
+          ${esc(result.goalFit?.explanation || "Goal-fit information is unavailable.")}
         </p>
       </div>
 
@@ -402,8 +415,8 @@ async function details(id) {
         <h3>Information to verify</h3>
 
         <ul>
-          ${(result.dataQuality.warnings || [])
-            .map(warning => <li>${esc(warning)}</li>)
+          ${(result.dataQuality?.warnings || [])
+            .map(warning => `<li>${esc(warning)}</li>`)
             .join("")}
         </ul>
       </div>
