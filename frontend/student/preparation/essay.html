@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Essay Studio | Ubuntu Gojo</title>
+
+  <link rel="stylesheet" href="essay.css">
+  <script src="essay.js" defer></script>
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <span class="brand-icon">✍️</span>
+
+        <div>
+          <strong>Ubuntu Gojo</strong>
+          <small>Scholarship Guide</small>
+        </div>
+      </div>
+
+      <a href="index.html" class="back-link">
+        ← My Preparation Dashboard
+      </a>
+
+      <p class="side-caption">ESSAY PREPARATION</p>
+
+      <nav aria-label="Essay Studio navigation">
+
+        <button class="nav-item active"
+                type="button"
+                data-view="overview">
+          🏠 Essay Overview
+        </button>
+
+        <button class="nav-item"
+                type="button"
+                data-view="workspace">
+          📝 My Essay Workspace
+        </button>
+
+        <button class="nav-item"
+                type="button"
+                data-view="planning">
+          💡 Planning & Brainstorming
+        </button>
+
+        <button class="nav-item"
+                type="button"
+                data-view="review">
+          ✅ Revision & Self-Review
+        </button>
+
+        <button class="nav-item"
+                type="button"
+                data-view="resources">
+          📚 Writing Resources
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        Your story. Your voice. Your journey.
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+      <header class="page-header">
+
+        <div>
+          <p class="eyebrow">MY PREPARATION / ESSAY STUDIO</p>
+
+          <h1 id="page-title">Essay Studio</h1>
+
+          <p>
+            Plan, write, revise, and organize your
+            scholarship and university application essays.
+          </p>
+        </div>
+
+        <span id="save-status" role="status" aria-live="polite">
+          Ready to write
+        </span>
+
+      </header>
+
+      <!-- ESSAY OVERVIEW -->
+
+      <section id="essay-overview" class="essay-view">
+
+        <div class="essay-hero">
+
+          <span class="hero-tag">
+            PERSONALIZED ESSAY PREPARATION
+          </span>
+
+          <h2>Your story deserves your own voice.</h2>
+
+          <p>
+            Develop meaningful essay ideas, organize your
+            experiences, and prepare authentic applications
+            step by step.
+          </p>
+
+          <button type="button"
+                  class="hero-button"
+                  data-open-view="workspace">
+            Start Writing →
+          </button>
+
+        </div>
+
+        <h2>My Essay Preparation Areas</h2>
+
+        <div class="essay-category-grid">
+
+          <button class="essay-category-card"
+                  type="button"
+                  data-open-view="workspace">
+            <span>📝</span>
+            <h3>My Essay Workspace</h3>
+            <p>Create, organize, and continue your essay drafts.</p>
+            <strong>Open Workspace →</strong>
+          </button>
+
+          <button class="essay-category-card"
+                  type="button"
+                  data-open-view="planning">
+            <span>💡</span>
+            <h3>Planning & Brainstorming</h3>
+            <p>Understand prompts and develop your own ideas.</p>
+            <strong>Start Planning →</strong>
+          </button>
+
+          <button class="essay-category-card"
+                  type="button"
+                  data-open-view="review">
+            <span>✅</span>
+            <h3>Revision & Self-Review</h3>
+            <p>Review clarity, reflection, and essay structure.</p>
+            <strong>Review My Writing →</strong>
+          </button>
+
+          <button class="essay-category-card"
+                  type="button"
+                  data-open-view="resources">
+            <span>📚</span>
+            <h3>Writing Resources</h3>
+            <p>Explore practical guidance for application essays.</p>
+            <strong>Explore Resources →</strong>
+          </button>
+
+        </div>
+
+      </section>
+
+      <!-- ESSAY WORKSPACE -->
+
+      <section id="essay-workspace" class="essay-view" hidden>
+        <h2>My Essay Workspace</h2>
+        <p>Create and manage your application essays.</p>
+
+        <div id="essay-workspace-content"></div>
+      </section>
+
+      <!-- PLANNING -->
+
+      <section id="essay-planning" class="essay-view" hidden>
+        <h2>Planning & Brainstorming</h2>
+        <p>Develop your ideas before writing your first draft.</p>
+
+        <div id="essay-planning-content"></div>
+      </section>
+
+      <!-- SELF REVIEW -->
+
+      <section id="essay-review" class="essay-view" hidden>
+        <h2>Revision & Self-Review</h2>
+        <p>Improve your writing while preserving your own voice.</p>
+
+        <div id="essay-review-content"></div>
+      </section>
+
+      <!-- RESOURCES -->
+
+      <section id="essay-resources" class="essay-view" hidden>
+        <h2>Writing Resources</h2>
+        <p>Learn how to prepare different application essays.</p>
+
+        <div id="essay-resources-content"></div>
+      </section>
+
+      <footer class="page-footer">
+        Ubuntu Gojo · Essay Preparation Center
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Academic Preparation Center | Ubuntu Gojo</title>
+
+  <link rel="stylesheet" href="academic.css">
+
+  <script src="academic.js" defer></script>
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+
+        <span class="brand-icon">🎓</span>
+
+        <div>
+          <strong>Ubuntu Gojo</strong>
+          <small>Scholarship Guide</small>
+        </div>
+
+      </div>
+
+      <a href="index.html" class="back-link">
+        ← My Preparation Dashboard
+      </a>
+
+      <p class="side-caption">
+        ACADEMIC PREPARATION
+      </p>
+
+      <nav aria-label="Academic preparation areas">
+
+        <!-- NEW OVERVIEW BUTTON -->
+
+        <button
+          type="button"
+          class="nav-item active"
+          data-workspace="overview"
+        >
+          <span class="nav-icon">🏠</span>
+
+          <span>
+            <strong>Academic Overview</strong>
+            <small>My academic dashboard</small>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-workspace="performance"
+        >
+          <span class="nav-icon">📊</span>
+
+          <span>
+            <strong>Academic Performance</strong>
+            <small>Grades and subjects</small>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-workspace="transcript"
+        >
+          <span class="nav-icon">📄</span>
+
+          <span>
+            <strong>Transcript Preparation</strong>
+            <small>School documents</small>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-workspace="achievements"
+        >
+          <span class="nav-icon">🏆</span>
+
+          <span>
+            <strong>Academic Achievements</strong>
+            <small>Awards and recognition</small>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-workspace="improvement"
+        >
+          <span class="nav-icon">🎯</span>
+
+          <span>
+            <strong>Academic Improvement</strong>
+            <small>Goals and study plans</small>
+          </span>
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Small steps. Stronger applications.</p>
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+      <!-- PAGE HEADER -->
+
+      <header class="page-header">
+
+        <div>
+
+          <p class="eyebrow">
+            MY PREPARATION / ACADEMIC
+          </p>
+
+          <h1 id="page-title">
+            Academic Preparation Center
+          </h1>
+
+          <p>
+            Understand your academic readiness, organize
+            your achievements and prepare for future opportunities.
+          </p>
+
+        </div>
+
+        <span
+          id="save-status"
+          class="save-label"
+          role="status"
+          aria-live="polite"
+        >
+          Saved in this browser
+        </span>
+
+      </header>
+
+
+      <!-- ===================================
+           NEW ACADEMIC OVERVIEW DASHBOARD
+      ==================================== -->
+
+      <section id="academic-overview" class="academic-view">
+
+        <!-- HERO -->
+
+        <div class="academic-hero">
+
+          <div class="academic-hero-content">
+
+            <span class="hero-tag">
+              PERSONALIZED ACADEMIC PREPARATION
+            </span>
+
+            <h2>
+              Build a stronger academic journey,
+              one step at a time.
+            </h2>
+
+            <p>
+              Organize your academic performance, prepare
+              school documents, record achievements and
+              develop meaningful improvement plans.
+            </p>
+
+            <button
+              type="button"
+              class="hero-button"
+              data-open-workspace="performance"
+            >
+              Start Preparing →
+            </button>
+
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            🎓
+          </div>
+
+        </div>
+
+
+        <!-- OVERALL SUMMARY -->
+
+        <div class="dashboard-heading">
+
+          <div>
+            <h2>Your Academic Snapshot</h2>
+
+            <p>
+              An overview of your academic preparation journey.
+            </p>
+          </div>
+
+        </div>
+
+        <div
+          id="academic-dashboard-summary"
+          class="dashboard-summary"
+          aria-label="Academic preparation summary"
+        >
+          <!-- Populated by academic.js -->
+        </div>
+
+
+        <!-- FOUR ACADEMIC AREAS -->
+
+        <div class="dashboard-heading">
+
+          <div>
+            <h2>My Academic Preparation Areas</h2>
+
+            <p>
+              Select an area to open its dedicated preparation tools.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="academic-category-grid">
+
+          <!-- PERFORMANCE -->
+
+          <button
+            type="button"
+            class="academic-category-card"
+            data-open-workspace="performance"
+          >
+
+            <span class="academic-category-icon">
+              📊
+            </span>
+
+            <h3>Academic Performance</h3>
+
+            <p>
+              Organize your grades, monitor subjects and
+              understand your academic progress.
+            </p>
+
+            <span class="category-action">
+              Open Grade Tracker →
+            </span>
+
+          </button>
+
+
+          <!-- TRANSCRIPT -->
+
+          <button
+            type="button"
+            class="academic-category-card"
+            data-open-workspace="transcript"
+          >
+
+            <span class="academic-category-icon">
+              📄
+            </span>
+
+            <h3>Transcript Preparation</h3>
+
+            <p>
+              Prepare your school transcripts and
+              organize required educational documents.
+            </p>
+
+            <span class="category-action">
+              Open Document Tracker →
+            </span>
+
+          </button>
+
+
+          <!-- ACHIEVEMENTS -->
+
+          <button
+            type="button"
+            class="academic-category-card"
+            data-open-workspace="achievements"
+          >
+
+            <span class="academic-category-icon">
+              🏆
+            </span>
+
+            <h3>Academic Achievements</h3>
+
+            <p>
+              Record academic awards, recognition,
+              accomplishments and supporting evidence.
+            </p>
+
+            <span class="category-action">
+              Open Achievement Portfolio →
+            </span>
+
+          </button>
+
+
+          <!-- IMPROVEMENT -->
+
+          <button
+            type="button"
+            class="academic-category-card"
+            data-open-workspace="improvement"
+          >
+
+            <span class="academic-category-icon">
+              🎯
+            </span>
+
+            <h3>Academic Improvement</h3>
+
+            <p>
+              Identify development priorities, set
+              meaningful goals and track your progress.
+            </p>
+
+            <span class="category-action">
+              Open Goal Planner →
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <!-- OVERALL PROGRESS -->
+
+        <div class="dashboard-heading">
+
+          <div>
+            <h2>Preparation Progress</h2>
+
+            <p>
+              Follow your progress across all four academic areas.
+            </p>
+          </div>
+
+        </div>
+
+        <div
+          id="academic-overall-progress"
+          class="academic-progress-list"
+        >
+          <!-- Populated by academic.js -->
+        </div>
+
+      </section>
+
+
+      <!-- ===================================
+           EXISTING ACADEMIC WORKSPACE
+      ==================================== -->
+
+      <section
+        id="academic-workspace"
+        class="academic-view"
+        hidden
+      >
+
+        <button
+          type="button"
+          class="workspace-back"
+          id="academic-back-btn"
+        >
+          ← Academic Overview
+        </button>
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="intro-card">
+
+          <div class="intro-content">
+
+            <p
+              class="eyebrow"
+              id="workspace-category"
+            >
+              ACADEMIC PERFORMANCE
+            </p>
+
+            <h2 id="workspace-title">
+              Academic Performance
+            </h2>
+
+            <p id="workspace-description">
+              Organize your subjects and academic results.
+            </p>
+
+          </div>
+
+          <div
+            class="intro-icon"
+            id="workspace-icon"
+            aria-hidden="true"
+          >
+            📊
+          </div>
+
+        </section>
+
+
+        <!-- EXISTING WORKSPACE SUMMARY -->
+
+        <section
+          class="summary-grid"
+          id="summary-grid"
+          aria-label="Academic workspace summary"
+        >
+        </section>
+
+
+        <!-- EXISTING TOPIC-SPECIFIC TABS -->
+
+        <div
+          class="tabs"
+          id="workspace-tabs"
+          role="tablist"
+          aria-label="Academic workspace tools"
+        >
+        </div>
+
+
+        <!-- EXISTING INTERACTIVE CONTENT -->
+
+        <section
+          id="tab-content"
+          class="content"
+          aria-live="polite"
+        >
+        </section>
+
+      </section>
+
+
+      <!-- FOOTER -->
+
+      <footer class="page-footer">
+
+        <p>
+          Ubuntu Gojo · Academic Preparation Center
+        </p>
+
+        <p>
+          Your preparation information is currently
+          stored in this browser.
+        </p>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

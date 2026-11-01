@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Extracurricular Preparation | Ubuntu Gojo</title>
+
+  <link rel="stylesheet" href="extracurricular.css">
+
+  <script src="extracurricular.js" defer></script>
+</head>
+
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-icon">🌱</div>
+
+      <div>
+        <h2>Ubuntu Gojo</h2>
+        <span>My Preparation</span>
+      </div>
+    </div>
+
+    <a href="index.html" class="back-link">
+      ← Preparation Dashboard
+    </a>
+
+    <div class="sidebar-label">
+      EXTRACURRICULAR PREPARATION
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <button class="nav-item active" data-view="overview">
+        <span>🏠</span>
+        Overview
+      </button>
+
+      <button class="nav-item" data-view="volunteering">
+        <span>🤝</span>
+        Volunteering
+      </button>
+
+      <button class="nav-item" data-view="research">
+        <span>🔬</span>
+        Research
+      </button>
+
+      <button class="nav-item" data-view="competitions">
+        <span>🏆</span>
+        Competitions
+      </button>
+
+      <button class="nav-item" data-view="leadership">
+        <span>👥</span>
+        Clubs & Leadership
+      </button>
+
+      <button class="nav-item" data-view="projects">
+        <span>💡</span>
+        Projects & Innovation
+      </button>
+
+      <button class="nav-item" data-view="other">
+        <span>✨</span>
+        Other Activities
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <button class="nav-item" data-view="documents">
+        <span>📁</span>
+        Documents & Records
+      </button>
+
+      <button class="nav-item" data-view="progress">
+        <span>📊</span>
+        Progress Tracker
+      </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      Your journey. Your growth.
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div>
+        <span class="eyebrow">
+          MY PREPARATION / EXTRACURRICULARS
+        </span>
+
+        <h1 id="page-title">
+          Extracurricular Preparation
+        </h1>
+      </div>
+
+      <div class="topbar-actions">
+        <span id="save-status" aria-live="polite">
+          Ready
+        </span>
+      </div>
+
+    </header>
+
+
+    <!-- OVERVIEW -->
+    <section id="overview-view" class="view active">
+
+      <div class="hero-card">
+
+        <div class="hero-content">
+
+          <span class="hero-tag">
+            PERSONALIZED PREPARATION
+          </span>
+
+          <h2>
+            Turn recommended opportunities
+            into meaningful experiences.
+          </h2>
+
+          <p>
+            Your extracurricular recommendations are organized
+            here so you can understand each activity, prepare
+            for its requirements, manage deadlines, and track
+            your personal growth.
+          </p>
+
+          <button
+            class="hero-button"
+            type="button"
+            data-action="view-activities"
+          >
+            View My Activities →
+          </button>
+
+        </div>
+
+        <div class="hero-illustration" aria-hidden="true">
+          🌟
+        </div>
+
+      </div>
+
+
+      <!-- SUMMARY -->
+      <div class="section-heading">
+        <div>
+          <h2>Your Preparation Snapshot</h2>
+          <p>An overview of your extracurricular journey.</p>
+        </div>
+      </div>
+
+      <div id="summary-grid" class="summary-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+
+      <!-- ACTIVITY CATEGORIES -->
+      <div class="section-heading">
+        <div>
+          <h2>My Activity Categories</h2>
+
+          <p>
+            Explore your recommended activities by category.
+          </p>
+        </div>
+      </div>
+
+      <div class="category-grid">
+
+        <button class="category-card" data-category="volunteering">
+          <span class="category-icon">🤝</span>
+          <h3>Volunteering</h3>
+          <p>Community service and social impact.</p>
+          <span class="category-count" data-count="volunteering">
+            View activities
+          </span>
+        </button>
+
+        <button class="category-card" data-category="research">
+          <span class="category-icon">🔬</span>
+          <h3>Research</h3>
+          <p>Research programs and academic exploration.</p>
+          <span class="category-count" data-count="research">
+            View activities
+          </span>
+        </button>
+
+        <button class="category-card" data-category="competitions">
+          <span class="category-icon">🏆</span>
+          <h3>Competitions</h3>
+          <p>Academic, creative and technical challenges.</p>
+          <span class="category-count" data-count="competitions">
+            View activities
+          </span>
+        </button>
+
+        <button class="category-card" data-category="leadership">
+          <span class="category-icon">👥</span>
+          <h3>Clubs & Leadership</h3>
+          <p>Student organizations and leadership experiences.</p>
+          <span class="category-count" data-count="leadership">
+            View activities
+          </span>
+        </button>
+
+        <button class="category-card" data-category="projects">
+          <span class="category-icon">💡</span>
+          <h3>Projects & Innovation</h3>
+          <p>Personal projects, entrepreneurship and innovation.</p>
+          <span class="category-count" data-count="projects">
+            View activities
+          </span>
+        </button>
+
+        <button class="category-card" data-category="other">
+          <span class="category-icon">✨</span>
+          <h3>Other Activities</h3>
+          <p>Additional extracurricular opportunities.</p>
+          <span class="category-count" data-count="other">
+            View activities
+          </span>
+        </button>
+
+      </div>
+
+
+      <!-- RECOMMENDED ACTIVITIES -->
+      <div class="section-heading">
+
+        <div>
+          <h2>My Recommended Activities</h2>
+
+          <p>
+            Activities received from your personalized
+            opportunity recommendations.
+          </p>
+        </div>
+
+      </div>
+
+      <div id="recommended-list" class="activity-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORY VIEW -->
+    <section id="category-view" class="view">
+
+      <button
+        class="text-back"
+        type="button"
+        data-action="back-overview"
+      >
+        ← All Categories
+      </button>
+
+      <div class="section-heading">
+
+        <div>
+          <span class="eyebrow">YOUR ACTIVITIES</span>
+
+          <h2 id="category-title">
+            Category
+          </h2>
+
+          <p id="category-description"></p>
+        </div>
+
+      </div>
+
+      <div id="category-activities" class="activity-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+    </section>
+
+
+    <!-- INDIVIDUAL ACTIVITY WORKSPACE -->
+    <section id="activity-view" class="view">
+
+      <button
+        class="text-back"
+        type="button"
+        data-action="back-category"
+      >
+        ← Back to Activities
+      </button>
+
+      <div class="activity-header">
+
+        <div>
+          <span id="activity-category" class="eyebrow"></span>
+
+          <h2 id="activity-title"></h2>
+
+          <p id="activity-description"></p>
+        </div>
+
+        <span id="activity-status" class="status-pill">
+          Not Started
+        </span>
+
+      </div>
+
+
+      <!-- OPPORTUNITY INFORMATION -->
+      <div id="activity-information" class="information-grid">
+        <!-- Official opportunity information -->
+      </div>
+
+
+      <!-- WORKSPACE TABS -->
+      <div class="workspace-tabs" id="activity-tabs">
+
+        <button class="workspace-tab active" data-tab="understand">
+          Understand
+        </button>
+
+        <button class="workspace-tab" data-tab="requirements">
+          Requirements
+        </button>
+
+        <button class="workspace-tab" data-tab="roadmap">
+          Preparation Roadmap
+        </button>
+
+        <button class="workspace-tab" data-tab="records">
+          My Records
+        </button>
+
+        <button class="workspace-tab" data-tab="tracking">
+          Progress
+        </button>
+
+      </div>
+
+      <div id="activity-tab-content" class="tab-content">
+        <!-- Populated by JavaScript -->
+      </div>
+
+    </section>
+
+
+    <!-- DOCUMENTS AND RECORDS -->
+    <section id="documents-view" class="view">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="eyebrow">MY EXTRACURRICULAR JOURNEY</span>
+
+          <h2>Documents & Records</h2>
+
+          <p>
+            Organize participation evidence, certificates,
+            application documents and activity records.
+          </p>
+        </div>
+
+      </div>
+
+      <div id="document-summary" class="summary-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <div id="documents-content">
+        <!-- Populated by JavaScript -->
+      </div>
+
+    </section>
+
+
+    <!-- OVERALL PROGRESS -->
+    <section id="progress-view" class="view">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="eyebrow">MY GROWTH</span>
+
+          <h2>Extracurricular Progress Tracker</h2>
+
+          <p>
+            Monitor preparation across your recommended
+            extracurricular activities.
+          </p>
+        </div>
+
+      </div>
+
+      <div id="progress-summary" class="summary-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <div id="progress-content">
+        <!-- Populated by JavaScript -->
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+</body>
+</html>

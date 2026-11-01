@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Test Preparation | Ubuntu Gojo</title>
+
+  <link rel="stylesheet" href="./test.css">
+  <script src="./test.js" defer></script>
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <span class="brand-icon">📚</span>
+
+        <div>
+          <strong>Ubuntu Gojo</strong>
+          <small>Scholarship Guide</small>
+        </div>
+      </div>
+
+      <a href="./index.html" class="back-link">
+        ← My Preparation Dashboard
+      </a>
+
+      <p class="side-caption">TEST PREPARATION</p>
+
+      <nav aria-label="Test Preparation navigation">
+
+        <button type="button"
+                class="nav-item active"
+                data-view="overview">
+          🏠 Test Overview
+        </button>
+
+        <button type="button"
+                class="nav-item"
+                data-view="requirements">
+          📋 Test Requirements
+        </button>
+
+        <button type="button"
+                class="nav-item"
+                data-view="preparation">
+          🎯 My Test Preparation
+        </button>
+
+        <button type="button"
+                class="nav-item"
+                data-view="progress">
+          📅 Study Plan & Progress
+        </button>
+
+        <button type="button"
+                class="nav-item"
+                data-view="resources">
+          📖 Learning Resources
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        Prepare for the tests that matter to your goals.
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+      <header class="page-header">
+
+        <div>
+          <p class="eyebrow">
+            MY PREPARATION / TEST PREPARATION
+          </p>
+
+          <h1 id="page-title">
+            Test Preparation Center
+          </h1>
+
+          <p>
+            Understand test requirements, organize your
+            preparation and track your progress.
+          </p>
+        </div>
+
+        <span id="save-status"
+              role="status"
+              aria-live="polite">
+          Ready to prepare
+        </span>
+
+      </header>
+
+      <!-- OVERVIEW -->
+
+      <section id="test-overview" class="test-view">
+
+        <div class="test-hero">
+
+          <span class="hero-tag">
+            PERSONALIZED TEST PREPARATION
+          </span>
+
+          <h2>
+            Prepare for the right tests,
+            not every test.
+          </h2>
+
+          <p>
+            Explore admission and scholarship test
+            requirements, identify your priorities,
+            and develop a preparation plan that
+            supports your education goals.
+          </p>
+
+          <button type="button"
+                  class="hero-button"
+                  data-open-view="requirements">
+            Explore Test Requirements →
+          </button>
+
+        </div>
+
+        <div class="dashboard-heading">
+          <h2>My Test Preparation Areas</h2>
+          <p>Select an area to begin preparing.</p>
+        </div>
+
+        <div class="test-category-grid">
+
+          <button type="button"
+                  class="test-category-card"
+                  data-open-view="requirements">
+
+            <span class="category-icon">📋</span>
+
+            <h3>Test Requirements</h3>
+
+            <p>
+              Understand common admission and
+              language proficiency requirements.
+            </p>
+
+            <strong>Explore Requirements →</strong>
+          </button>
+
+          <button type="button"
+                  class="test-category-card"
+                  data-open-view="preparation">
+
+            <span class="category-icon">🎯</span>
+
+            <h3>My Test Preparation</h3>
+
+            <p>
+              Select relevant tests and organize
+              your personal preparation goals.
+            </p>
+
+            <strong>Open My Preparation →</strong>
+          </button>
+
+          <button type="button"
+                  class="test-category-card"
+                  data-open-view="progress">
+
+            <span class="category-icon">📅</span>
+
+            <h3>Study Plan & Progress</h3>
+
+            <p>
+              Plan study activities and monitor
+              your preparation over time.
+            </p>
+
+            <strong>View Progress →</strong>
+          </button>
+
+          <button type="button"
+                  class="test-category-card"
+                  data-open-view="resources">
+
+            <span class="category-icon">📖</span>
+
+            <h3>Learning Resources</h3>
+
+            <p>
+              Find useful preparation guidance
+              and organize learning resources.
+            </p>
+
+            <strong>Explore Resources →</strong>
+          </button>
+
+        </div>
+
+      </section>
+
+      <!-- TEST REQUIREMENTS -->
+
+      <section id="test-requirements"
+               class="test-view"
+               hidden>
+
+        <h2>Test Requirements</h2>
+
+        <p>
+          Understand which tests may be required,
+          optional, or eligible for a waiver.
+          Always confirm the latest requirements
+          with your target institution.
+        </p>
+
+        <div id="test-requirements-content"></div>
+
+      </section>
+
+      <!-- MY TEST PREPARATION -->
+
+      <section id="test-preparation"
+               class="test-view"
+               hidden>
+
+        <h2>My Test Preparation</h2>
+
+        <p>
+          Choose the tests relevant to your goals
+          and organize your preparation.
+        </p>
+
+        <div id="test-preparation-content"></div>
+
+      </section>
+
+      <!-- STUDY PLAN -->
+
+      <section id="test-progress"
+               class="test-view"
+               hidden>
+
+        <h2>Study Plan & Progress Tracker</h2>
+
+        <p>
+          Create preparation activities, set
+          study targets and monitor progress.
+        </p>
+
+        <div id="test-progress-content"></div>
+
+      </section>
+
+      <!-- RESOURCES -->
+
+      <section id="test-resources"
+               class="test-view"
+               hidden>
+
+        <h2>Learning Resources</h2>
+
+        <p>
+          Explore preparation information
+          and useful learning materials.
+        </p>
+
+        <div id="test-resources-content"></div>
+
+      </section>
+
+      <footer class="page-footer">
+        Ubuntu Gojo · Test Preparation Center
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ubuntu Gojo | My Preparation</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="preparation.js" defer></script>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+      <div class="brand">
+        <h2>🎓 Ubuntu Gojo</h2>
+        <p>Scholarship Guide</p>
+      </div>
+
+      <!-- Replace href with the verified main dashboard path -->
+
+      <a href="../Dashboard.html"
+   class="home-link"
+   id="ubuntu-home-link">
+  🏠 Main Ubuntu Gojo Dashboard
+</a>
+
+      <div class="sidebar-divider"></div>
+
+      <p class="sidebar-label">MY PREPARATION</p>
+
+      <nav aria-label="Preparation navigation">
+
+        <button class="nav-btn active" data-page="dashboard">
+          My Preparation
+        </button>
+
+        <button class="nav-btn" data-page="academic">
+          Academic & Transcript
+        </button>
+
+        <button class="nav-btn" data-page="extracurriculars">
+          Extracurriculars
+        </button>
+
+        <button class="nav-btn" data-page="essays">
+          Essay Studio
+        </button>
+
+        <button class="nav-btn" data-page="tests">
+          Test Preparation
+        </button>
+
+        <button class="nav-btn" data-page="requirements">
+          Other Requirements
+        </button>
+
+        <button class="nav-btn" data-page="documents">
+          Document Center
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <p>Your journey, your preparation.</p>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+      <header class="topbar">
+
+        <div>
+          <p class="eyebrow">YOUR PERSONAL JOURNEY</p>
+          <h1 id="page-title">My Preparation</h1>
+        </div>
+
+        <button id="refresh-btn" class="secondary-btn">
+          Refresh
+        </button>
+
+      </header>
+
+      <div id="message" role="status" aria-live="polite"></div>
+
+      <!-- DASHBOARD -->
+
+      <section id="dashboard-page">
+
+        <div class="welcome-card">
+
+          <p class="eyebrow">WELCOME TO YOUR PREPARATION SPACE</p>
+
+          <h2>Prepare with purpose.</h2>
+
+          <p>
+            Build your academic profile, strengthen your
+            activities, prepare essays, and organize your
+            requirements in one place.
+          </p>
+
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <h2>Preparation Areas</h2>
+            <p>Select an area to start preparing.</p>
+          </div>
+        </div>
+
+        <div id="section-grid" class="section-grid"></div>
+
+        <div class="section-heading">
+
+          <div>
+            <h2>My Workspaces</h2>
+            <p>Continue working on your preparation.</p>
+          </div>
+
+          <button id="new-workspace-btn" class="primary-btn">
+            + New Workspace
+          </button>
+
+        </div>
+
+        <div id="dashboard-workspaces" class="workspace-grid"></div>
+
+      </section>
+
+      <!-- SECTION PAGE -->
+
+      <section id="section-page" hidden>
+
+        <button id="back-btn" class="back-btn">
+          ← Back to Preparation
+        </button>
+
+        <div class="section-heading">
+
+          <div>
+            <h2 id="section-title"></h2>
+            <p id="section-description"></p>
+          </div>
+
+          <button id="section-create-btn" class="primary-btn">
+            + Create Workspace
+          </button>
+
+        </div>
+
+        <h3>Available Preparation Areas</h3>
+        <div id="section-options" class="options-grid"></div>
+
+        <h3>My Saved Workspaces</h3>
+        <div id="section-workspaces" class="workspace-grid"></div>
+
+      </section>
+
+      <!-- WORKSPACE PAGE -->
+
+      <section id="workspace-page" hidden>
+
+        <button id="workspace-back-btn" class="back-btn">
+          ← Back to Section
+        </button>
+
+        <div class="workspace-header">
+
+          <div>
+            <p class="eyebrow" id="workspace-section"></p>
+            <h2 id="workspace-title"></h2>
+            <p id="workspace-description"></p>
+          </div>
+
+          <select id="workspace-status" aria-label="Workspace status">
+            <option value="not_started">Not Started</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+
+        </div>
+
+        <div class="workspace-tabs">
+
+          <button class="tab active" data-tab="tasks">
+            Tasks
+          </button>
+
+          <button class="tab" data-tab="drafts">
+            Essay Drafts
+          </button>
+
+          <button class="tab" data-tab="plans">
+            Study Plans
+          </button>
+
+          <button class="tab" data-tab="resources">
+            Resources
+          </button>
+
+        </div>
+
+        <div id="workspace-content"></div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- CREATE WORKSPACE -->
+
+  <dialog id="workspace-dialog">
+
+    <form id="workspace-form">
+
+      <h2>Create Workspace</h2>
+
+      <label for="form-section">Preparation Section</label>
+
+      <select id="form-section" required>
+        <option value="academic">Academic & Transcript</option>
+        <option value="extracurriculars">Extracurriculars</option>
+        <option value="essays">Essay Studio</option>
+        <option value="tests">Test Preparation</option>
+        <option value="requirements">Other Requirements</option>
+        <option value="documents">Document Center</option>
+      </select>
+
+      <label for="form-title">Workspace Title</label>
+
+      <input
+        id="form-title"
+        maxlength="250"
+        placeholder="Example: My YYAS Preparation"
+        required
+      >
+
+      <label for="form-description">Description</label>
+
+      <textarea
+        id="form-description"
+        placeholder="What would you like to prepare?"
+      ></textarea>
+
+      <div class="dialog-actions">
+
+        <button type="button"
+                id="cancel-workspace"
+                class="secondary-btn">
+          Cancel
+        </button>
+
+        <button type="submit" class="primary-btn">
+          Create Workspace
+        </button>
+
+      </div>
+
+    </form>
+
+  </dialog>
+
+</body>
+</html>
