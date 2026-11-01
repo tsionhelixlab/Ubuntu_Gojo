@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Other Requirements | Ubuntu Gojo</title>
+
+  <link rel="stylesheet" href="./requirements.css">
+  <script src="./requirements.js" defer></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <span class="brand-icon">📑</span>
+
+      <div>
+        <strong>Ubuntu Gojo</strong>
+        <small>Scholarship Guide</small>
+      </div>
+    </div>
+
+    <a href="./index.html" class="back-link">
+      ← My Preparation Dashboard
+    </a>
+
+    <p class="side-caption">OTHER REQUIREMENTS</p>
+
+    <nav aria-label="Other Requirements navigation">
+
+      <button class="nav-item active"
+              type="button"
+              data-view="overview">
+        🏠 Requirements Overview
+      </button>
+
+      <button class="nav-item"
+              type="button"
+              data-view="cv">
+        📄 CV & Resume Builder
+      </button>
+
+      <button class="nav-item"
+              type="button"
+              data-view="portfolio">
+        💼 Portfolio & Projects
+      </button>
+
+      <button class="nav-item"
+              type="button"
+              data-view="recommendations">
+        ✉️ Recommendation Letters
+      </button>
+
+      <button class="nav-item"
+              type="button"
+              data-view="supporting">
+        📁 Supporting Requirements
+      </button>
+
+      <button class="nav-item"
+              type="button"
+              data-view="checklist">
+        ✅ Requirements Checklist
+      </button>
+
+      <button class="nav-item"
+              type="button"
+              data-view="resources">
+        📚 Guidance & Resources
+      </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      Prepare every requirement with confidence.
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+
+  <main class="main">
+
+    <header class="page-header">
+
+      <div>
+        <p class="eyebrow">
+          MY PREPARATION / OTHER REQUIREMENTS
+        </p>
+
+        <h1 id="page-title">
+          Other Requirements Center
+        </h1>
+
+        <p>
+          Prepare additional scholarship and university
+          application materials in one organized place.
+        </p>
+      </div>
+
+      <span id="save-status"
+            role="status"
+            aria-live="polite">
+        Ready to prepare
+      </span>
+
+    </header>
+
+    <!-- OVERVIEW -->
+
+    <section id="requirements-overview"
+             class="requirements-view">
+
+      <div class="requirements-hero">
+
+        <span class="hero-tag">
+          PERSONALIZED APPLICATION PREPARATION
+        </span>
+
+        <h2>
+          Every requirement.
+          One organized journey.
+        </h2>
+
+        <p>
+          Build your CV, organize your projects,
+          prepare recommendation requests,
+          and track additional application requirements
+          based on your education goals.
+        </p>
+
+        <button class="hero-button"
+                type="button"
+                data-open-view="cv">
+          Start Preparing →
+        </button>
+
+      </div>
+
+      <div class="dashboard-heading">
+        <h2>My Requirements Preparation Areas</h2>
+        <p>Choose an area to start preparing.</p>
+      </div>
+
+      <div class="requirements-grid">
+
+        <button class="requirement-card"
+                type="button"
+                data-open-view="cv">
+          <span class="category-icon">📄</span>
+          <h3>CV & Resume Builder</h3>
+          <p>
+            Organize your education, achievements,
+            skills and experiences.
+          </p>
+          <strong>Build My CV →</strong>
+        </button>
+
+        <button class="requirement-card"
+                type="button"
+                data-open-view="portfolio">
+          <span class="category-icon">💼</span>
+          <h3>Portfolio & Projects</h3>
+          <p>
+            Present projects, research,
+            creative work and achievements.
+          </p>
+          <strong>Open Portfolio →</strong>
+        </button>
+
+        <button class="requirement-card"
+                type="button"
+                data-open-view="recommendations">
+          <span class="category-icon">✉️</span>
+          <h3>Recommendation Letters</h3>
+          <p>
+            Organize recommenders and track
+            recommendation requests.
+          </p>
+          <strong>Manage Recommendations →</strong>
+        </button>
+
+        <button class="requirement-card"
+                type="button"
+                data-open-view="supporting">
+          <span class="category-icon">📁</span>
+          <h3>Supporting Requirements</h3>
+          <p>
+            Understand additional materials
+            requested by opportunities.
+          </p>
+          <strong>Explore Requirements →</strong>
+        </button>
+
+        <button class="requirement-card"
+                type="button"
+                data-open-view="checklist">
+          <span class="category-icon">✅</span>
+          <h3>Requirements Checklist</h3>
+          <p>
+            Identify missing requirements
+            and monitor your readiness.
+          </p>
+          <strong>View Checklist →</strong>
+        </button>
+
+        <button class="requirement-card"
+                type="button"
+                data-open-view="resources">
+          <span class="category-icon">📚</span>
+          <h3>Guidance & Resources</h3>
+          <p>
+            Explore explanations, preparation
+            tips and useful templates.
+          </p>
+          <strong>Explore Resources →</strong>
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- CV & RESUME BUILDER -->
+
+    <section id="requirements-cv"
+             class="requirements-view"
+             hidden>
+
+      <h2>CV & Resume Builder</h2>
+
+      <p>
+        Organize your academic background, skills,
+        experiences, projects and achievements
+        into a clear application CV.
+      </p>
+
+      <div id="cv-content" class="content-panel">
+
+        <h3>Create My CV</h3>
+
+        <p>
+          Enter your information below to prepare
+          your scholarship or university application CV.
+        </p>
+
+        <form id="cv-form" class="requirements-form">
+
+          <!-- PERSONAL INFORMATION -->
+
+          <label for="cv-name">Full Name</label>
+
+          <input
+            type="text"
+            id="cv-name"
+            placeholder="Enter your full name"
+            required
+          >
+
+          <label for="cv-email">Email Address</label>
+
+          <input
+            type="email"
+            id="cv-email"
+            placeholder="Enter your email address"
+          >
+
+          <!-- PERSONAL SUMMARY -->
+
+          <label for="cv-summary">Personal Summary</label>
+
+          <textarea
+            id="cv-summary"
+            placeholder="Briefly introduce yourself, your interests and academic goals..."
+          ></textarea>
+
+          <!-- EDUCATION -->
+
+          <label for="cv-education">Education</label>
+
+          <textarea
+            id="cv-education"
+            placeholder="School name, grade level, academic background and achievements..."
+          ></textarea>
+
+          <!-- EXPERIENCE -->
+
+          <label for="cv-experience">
+            Experience & Extracurricular Activities
+          </label>
+
+          <textarea
+            id="cv-experience"
+            placeholder="Leadership, volunteering, internships, clubs and other experiences..."
+          ></textarea>
+
+          <!-- SKILLS -->
+
+          <label for="cv-skills">Skills</label>
+
+          <textarea
+            id="cv-skills"
+            placeholder="Technical skills, languages, communication and other relevant skills..."
+          ></textarea>
+
+          <!-- PROJECTS -->
+
+          <label for="cv-projects">Projects</label>
+
+          <textarea
+            id="cv-projects"
+            placeholder="Describe your academic, technical, research or community projects..."
+          ></textarea>
+
+          <!-- AWARDS -->
+
+          <label for="cv-awards">Awards & Achievements</label>
+
+          <textarea
+            id="cv-awards"
+            placeholder="Competitions, certificates, honors and recognition..."
+          ></textarea>
+
+          <!-- PREVIEW BUTTON -->
+
+          <button type="submit" class="primary-btn">
+            Preview My CV
+          </button>
+
+        </form>
+
+        <!-- CV PREVIEW AREA -->
+
+        <div id="cv-preview" hidden></div>
+
+      </div>
+
+    </section>
+
+    <!-- PORTFOLIO -->
+
+    <section id="requirements-portfolio"
+             class="requirements-view"
+             hidden>
+
+      <h2>Portfolio & Projects</h2>
+
+      <p>
+        Present your projects, research, technical work,
+        volunteering and creative achievements.
+      </p>
+
+
+<div id="portfolio-content" class="content-panel">
+
+  <h3>My Project Portfolio</h3>
+
+  <p>
+    Organize your projects and demonstrate
+    your experiences, skills and contributions.
+  </p>
+
+  <form id="portfolio-form" class="requirements-form">
+
+    <label for="project-title">Project Title</label>
+    <input
+      type="text"
+      id="project-title"
+      placeholder="Enter your project title"
+      required
+    >
+
+    <label for="project-category">Project Category</label>
+    <select id="project-category" required>
+      <option value="">Select a category</option>
+      <option value="Technology">Technology</option>
+      <option value="Research">Research</option>
+      <option value="Community Service">Community Service</option>
+      <option value="Leadership">Leadership</option>
+      <option value="Creative Work">Creative Work</option>
+      <option value="Entrepreneurship">Entrepreneurship</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="project-description">Project Description</label>
+    <textarea
+      id="project-description"
+      placeholder="What is the project about?"
+      required
+    ></textarea>
+
+    <label for="project-role">My Role & Contribution</label>
+    <textarea
+      id="project-role"
+      placeholder="What did you personally contribute?"
+    ></textarea>
+
+    <label for="project-skills">Skills Demonstrated</label>
+    <textarea
+      id="project-skills"
+      placeholder="What skills did you use or develop?"
+    ></textarea>
+
+    <label for="project-outcome">Results & Achievements</label>
+    <textarea
+      id="project-outcome"
+      placeholder="Describe the results or impact of your work"
+    ></textarea>
+
+    <label for="project-link">Project Link (Optional)</label>
+    <input
+      type="url"
+      id="project-link"
+      placeholder="https://example.com"
+    >
+
+    <button type="submit" class="primary-btn">
+      Add Project
+    </button>
+
+  </form>
+
+  <div id="portfolio-list" aria-live="polite"></div>
+
+</div>
+
+
+    </section>
+
+    <!-- RECOMMENDATIONS -->
+
+    <section id="requirements-recommendations"
+             class="requirements-view"
+             hidden>
+
+      <h2>Recommendation Letters</h2>
+
+      <p>
+        Plan recommendation requests and track
+        the preparation and submission process.
+      </p>
+
+    <div id="recommendations-content" class="content-panel">
+    <h3>My Recommendation Tracker</h3>
+    <p>Keep track of teachers and mentors who will write your recommendation letters.</p>
+
+    <form id="recommendation-form" class="requirements-form">
+
+        <label for="recommender-name">Recommender Name</label>
+        <input type="text" id="recommender-name" required>
+
+        <label for="recommender-role">Role / Relationship</label>
+        <input type="text" id="recommender-role" required>
+
+        <label for="recommender-organization">School / Organization</label>
+        <input type="text" id="recommender-organization">
+
+        <label for="recommender-email">Email Address</label>
+        <input type="email" id="recommender-email">
+
+        <label for="recommendation-target">Scholarship / University</label>
+        <input type="text" id="recommendation-target">
+
+        <label for="recommendation-request-date">Request Date</label>
+        <input type="date" id="recommendation-request-date">
+
+        <label for="recommendation-deadline">Submission Deadline</label>
+        <input type="date" id="recommendation-deadline">
+
+        <label for="recommendation-status">Current Status</label>
+        <select id="recommendation-status">
+            <option value="Not Requested">Not Requested</option>
+            <option value="Requested">Requested</option>
+            <option value="Accepted">Accepted</option>
+            <option value="Submitted">Submitted</option>
+        </select>
+
+        <label for="recommendation-notes">Additional Notes</label>
+        <textarea id="recommendation-notes"></textarea>
+
+        <button type="submit" class="primary-btn">Add Recommendation</button>
+    </form>
+
+    <div id="recommendations-list" aria-live="polite"></div>
+</div>
+
+    </section>
+
+    <!-- SUPPORTING REQUIREMENTS -->
+
+    <section id="requirements-supporting"
+             class="requirements-view"
+             hidden>
+
+      <h2>Supporting Requirements</h2>
+
+      <p>
+        Understand identification, financial aid forms,
+        certificates, translations and other
+        opportunity-specific requirements.
+      </p>
+
+    <div id="supporting-content" class="content-panel">
+
+    <h3>My Supporting Documents</h3>
+    <p>Record additional documents required for your scholarship and university applications.</p>
+
+    <form id="supporting-form" class="requirements-form">
+
+        <label for="supporting-document-name">Document Name</label>
+        <input type="text" id="supporting-document-name"
+               placeholder="e.g. Passport, School Certificate" required>
+
+        <label for="supporting-document-type">Document Category</label>
+        <select id="supporting-document-type" required>
+            <option value="">Select category</option>
+            <option value="Identification">Identification</option>
+            <option value="Academic">Academic</option>
+            <option value="Financial">Financial</option>
+            <option value="Extracurricular">Extracurricular</option>
+            <option value="Translation">Translation</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="supporting-document-purpose">Required For</label>
+        <input type="text" id="supporting-document-purpose"
+               placeholder="e.g. University application">
+
+        <label for="supporting-document-deadline">Deadline</label>
+        <input type="date" id="supporting-document-deadline">
+
+        <label for="supporting-document-status">Preparation Status</label>
+        <select id="supporting-document-status">
+            <option value="Not Started">Not Started</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Ready">Ready</option>
+            <option value="Submitted">Submitted</option>
+        </select>
+
+        <label for="supporting-document-notes">Additional Notes</label>
+        <textarea id="supporting-document-notes"
+                  placeholder="Write any important details..."></textarea>
+
+        <button type="submit" class="primary-btn">
+            Add Document
+        </button>
+
+    </form>
+
+    <div id="supporting-documents-list" aria-live="polite"></div>
+
+</div>
+
+    </section>
+
+    <!-- CHECKLIST -->
+
+    <section id="requirements-checklist"
+             class="requirements-view"
+             hidden>
+
+      <h2>Requirements Checklist</h2>
+
+      <p>
+        Organize your required materials and
+        identify what still needs preparation.
+      </p>
+
+      <div id="checklist-content"
+           class="content-panel"></div>
+
+    </section>
+
+    <!-- GUIDANCE & RESOURCES -->
+
+    <section id="requirements-resources"
+             class="requirements-view"
+             hidden>
+
+      <h2>Guidance & Resources</h2>
+
+      <p>
+        Learn how to prepare supporting application
+        materials and understand unfamiliar requirements.
+      </p>
+
+      <div id="resources-content"
+           class="content-panel"></div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="page-footer">
+      Ubuntu Gojo · Other Requirements Center
+    </footer>
+
+  </main>
+
+</div>
+
+</body>
+</html>
